@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
     <span>COWORKING VLC</span>
     <span class="example-spacer"></span>
-    <button mat-button>Dashboard</button>
-    <button mat-button>Usuarios</button>
-    <button mat-button>Reportes</button>
+    <button mat-button routerLink="/dashboard">Dashboard</button>
+    <button mat-button routerLink="/dashboard/usuarios">Usuarios</button>
+    <button mat-button routerLink="/dashboard/reportes">Reportes</button>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon logout-icon" aria-label="Example icon-button logout">
+    <button mat-icon-button routerLink="/logout" class="example-icon logout-icon" aria-label="Example icon-button logout">
         <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>
