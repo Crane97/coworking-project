@@ -1,9 +1,7 @@
 <mat-toolbar color="primary">
     <span>COWORKING VLC</span>
     <span class="example-spacer"></span>
-    <button mat-button routerLink="/dashboard">Dashboard</button>
-    <button mat-button routerLink="/dashboard/usuarios">Usuarios</button>
-    <button mat-button routerLink="/dashboard/reportes">Reportes</button>
+    <button mat-button *ngFor="let item of menu" [routerLink]="item.redirect">{{item.nombre}}</button>
     <span class="example-spacer"></span>
     <button mat-icon-button routerLink="/logout" class="example-icon logout-icon" aria-label="Example icon-button logout">
         <mat-icon>logout</mat-icon>
