@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardComponent } from './dashboard.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { ReportesComponent } from './reportes/reportes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { SalasComponent } from './salas/salas.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[
     {path:'', component: InicioComponent},
     {path:'usuarios', component: UsuariosComponent},
-    {path:'reportes', component: ReportesComponent},
     {path:'contacto', component: ContactoComponent},
+    {path:'salas', component: SalasComponent},
     {path:'**', component: InicioComponent , pathMatch: 'full' }
   ]}
 ];

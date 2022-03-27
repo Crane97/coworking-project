@@ -9,7 +9,7 @@
     },
     {
         "nombre": "Nuestras salas",
-        "redirect": "/dashboard/reportes"
+        "redirect": "/dashboard/salas"
     },
     {
         "nombre": "Contacto",

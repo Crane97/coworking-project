@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+  }
+
+th {
+    width: 20%;
+}
+
+.pointer{
+    cursor: pointer;
+}
