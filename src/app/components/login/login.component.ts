@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
   doLogin() {
     this.service.login(this.form.value.user, this.form.value.password).subscribe(data => {
       //this.message = data.accesstoken;
-      localStorage.setItem("JWTtoken", data.accesstoken);
+      console.log(data);
+      localStorage.setItem("JWTtoken", data.access_token);
       this.router.navigateByUrl("dashboard");
       //console.log(data);
     },
@@ -41,22 +42,6 @@ export class LoginComponent implements OnInit {
   );
   }
 
-  doLogin1() {
-    console.log(this.form);
-    this.username = this.form.value.user;
-    this.password = this.form.value.password;
-    this.service.login(this.username, this.password).subscribe(data => {
-      //this.message = data.accesstoken;
-      localStorage.setItem("JWTtoken", data.accesstoken);
-      this.router.navigateByUrl("dashboard");
-      //console.log(data);
-    },
-    (error) => {
-      console.log(error.error.message);
-      this.errormessage="Wrong credentials";
-    }
-  );
-  }
 /*
   ingresar(){
     console.log(this.form);
