@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Token } from './interfaces/token';
+import { Usuario } from './interfaces/usuario';
 
 
 
@@ -18,6 +19,16 @@ import { Token } from './interfaces/token';
       body.set('username', username);
       body.set('password', password);
       return this.http.post<Token>("http://localhost:9090/login", body.toString(), options);
+    }
+
+    getAllUsers(page: number): Observable<Usuario> {
+      var reqHeader = new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
+      });
+      var params = new HttpParams().set("page", page);
+      //console.log(params.get("page"))
+      return this.http.get<Usuario>("http://localhost:9090/api/user/users", { headers: reqHeader, params: params });
     }
   }
   
