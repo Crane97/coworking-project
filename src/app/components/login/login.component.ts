@@ -36,8 +36,11 @@ export class LoginComponent implements OnInit {
       //console.log(data);
     },
     (error) => {
-      console.log(error.error.message);
-      this.errormessage="Wrong credentials";
+      this._snackBar.open('El nombre de usuario o la contraseña son incorrectos.', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
     }
   );
   }

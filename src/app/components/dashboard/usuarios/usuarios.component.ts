@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
-
-const ELEMENT_DATA: Usuario[] = [
-  {usuario: 'jperez', nombre: 'Juan', apellido: 'Perez', sexo: 'H'},
-  {usuario: 'jorge', nombre: 'Jorge', apellido: 'Ruiz de la Torre', sexo: 'H'},
-  {usuario: 'alberto', nombre: 'Alberto', apellido: 'Monforte', sexo: 'M'}
-]
+import { RestapiService } from 'src/app/restapi.service';
+import { newArray } from '@angular/compiler/src/util';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-usuarios',
@@ -15,22 +12,29 @@ const ELEMENT_DATA: Usuario[] = [
 })
 export class UsuariosComponent implements OnInit {
 
-  name? : String;
-  surname? : String;
-  partner? : Boolean;
-  publicable? : Boolean;
-  openToWork? : Boolean;
-  jobTitle? : String;
+  page : number = 0;
+  usuarios : Usuario[];
+  usuario : Usuario;
 
   displayedColumns: string[] = ['usuario', 'nombre', 'apellido', 'sexo', 'acciones'];
-  dataSource = ELEMENT_DATA;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private service : RestapiService) { }
 
   ngOnInit(): void {
-    this.http.get("http://localhost:9090/api/user/users").subscribe((resp:any)=>{
-      
-    });
+    this.usuarios = [this.usuario];
+    this.listAllUsers();
+  }
+
+  listAllUsers(){
+    this.service.getAllUsers(this.page).subscribe(data => {
+      this.usuarios = data['content'];
+      console.log(data);
+      console.log(this.usuarios);
+    },
+      (error) => {
+        console.log(error.error.message);
+      }
+    );
   }
 
 }
