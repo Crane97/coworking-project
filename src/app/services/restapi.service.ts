@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Token } from './interfaces/token';
-import { Usuario } from './interfaces/usuario';
+import { Token } from '../interfaces/token';
+import { Usuario } from '../interfaces/usuario';
 
 
 
@@ -29,6 +29,10 @@ import { Usuario } from './interfaces/usuario';
       var params = new HttpParams().set("page", page);
       //console.log(params.get("page"))
       return this.http.get<Usuario>("http://localhost:9090/api/user/users", { headers: reqHeader, params: params });
+    }
+
+    createUser(user : Usuario) {
+    return this.http.post("http://localhost:9090/api/user/add", user, { responseType: "text" });
     }
   }
   

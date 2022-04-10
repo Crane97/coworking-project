@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
-import { RestapiService } from 'src/app/restapi.service';
+import { RestapiService } from 'src/app/services/restapi.service';
 import { newArray } from '@angular/compiler/src/util';
 import { DOCUMENT } from '@angular/common';
 
@@ -21,7 +21,6 @@ export class UsuariosComponent implements OnInit {
   constructor(private http : HttpClient, private service : RestapiService) { }
 
   ngOnInit(): void {
-    this.usuarios = [this.usuario];
     this.listAllUsers();
   }
 
@@ -29,6 +28,7 @@ export class UsuariosComponent implements OnInit {
     this.service.getAllUsers(this.page).subscribe(data => {
       this.usuarios = data['content'];
       console.log(data);
+      console.log(this.usuarios[1]);
       console.log(this.usuarios);
     },
       (error) => {

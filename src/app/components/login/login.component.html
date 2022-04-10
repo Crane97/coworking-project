@@ -1,8 +1,15 @@
 <div class = body>
-    <div class = login>
-        <mat-spinner class="spinner" *ngIf="loading" diameter="50"></mat-spinner>
 
-        <form *ngIf="!loading" [formGroup] = "form" (ngSubmit)="doLogin()">
+    <!-- BOTÓN CREAR CUENTA -->
+    <div class="example-button-row create-account">
+        <button mat-raised-button color="primary" (onclick)="registerWindow()">Create account</button>
+    </div>
+
+    <div class = login>
+
+
+        <!-- FORMULARIO -->
+        <form [formGroup] = "form" (ngSubmit)="doLogin()">
             <img src="./assets/img/user.png" width="50%">
             <h1>Login</h1>
             <mat-form-field class = "ancho" appearance="fill">

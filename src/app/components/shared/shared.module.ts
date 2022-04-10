@@ -16,6 +16,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -34,7 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatIconModule,
     HttpClientModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ],
   exports:[
     MatSliderModule,
@@ -48,7 +50,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatIconModule,
     HttpClientModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }
