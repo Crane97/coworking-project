@@ -2,4 +2,25 @@
     <mat-toolbar>
         <span>Nuestras salas</span>
     </mat-toolbar>
-</div>
+      <table class="mat-elevation-z2">
+        <tr>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Room Type</th>
+            <th>Reservar</th>
+
+        </tr>
+        <tbody>
+            <tr *ngFor="let room of rooms" style="text-align: center;">
+                <td>{{room.name}}</td>
+                <td>{{room.capacity}}</td>
+                <td>{{room.roomType}}</td>
+                <td>
+                    <button class = "button" mat-raised-button color="primary" routerLink="/dashboard">
+                        Consultar disponibilidad
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>

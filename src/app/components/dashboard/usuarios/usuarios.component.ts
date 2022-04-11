@@ -15,9 +15,7 @@ export class UsuariosComponent implements OnInit {
   page : number = 0;
   usuarios : Usuario[];
   usuario : Usuario;
-
-  displayedColumns: string[] = ['usuario', 'nombre', 'apellido', 'sexo', 'acciones'];
-
+  
   constructor(private http : HttpClient, private service : RestapiService) { }
 
   ngOnInit(): void {

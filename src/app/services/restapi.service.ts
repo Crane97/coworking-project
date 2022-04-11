@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Room } from '../interfaces/room';
 import { Token } from '../interfaces/token';
 import { Usuario } from '../interfaces/usuario';
 
@@ -52,6 +53,12 @@ import { Usuario } from '../interfaces/usuario';
 
     logout() {
       localStorage.removeItem("JWTtoken");
+    }
+
+    getAllRooms(page : number){
+      //console.log(params.get("page"))
+      var params = new HttpParams().set("page", page);
+      return this.http.get<Room>("http://localhost:9090/api/room/rooms");
     }
   }
   
