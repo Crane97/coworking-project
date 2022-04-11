@@ -21,6 +21,18 @@ import { Usuario } from '../interfaces/usuario';
       return this.http.post<Token>("http://localhost:9090/login", body.toString(), options);
     }
 
+    getTokenInfo(){
+      var reqHeader = new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
+      });
+      const jwtoken = localStorage.getItem("JWTtoken");
+      const sub = JSON.parse(jwtoken);
+      console.log(jwtoken);
+      console.log(sub);
+      return localStorage.getItem('JWTtoken');
+    }
+
     getAllUsers(page: number): Observable<Usuario> {
       /*
       ESTE CÓDIGO SOLO SE UTILIZARÁ PARA LAS LLAMADAS EN LAS QUE SEA NECESARIO ESTAR LOGGEADO
@@ -36,6 +48,10 @@ import { Usuario } from '../interfaces/usuario';
 
     createUser(user : Usuario) {
       return this.http.post("http://localhost:9090/api/user/add", user, { responseType: "text" });
+    }
+
+    logout() {
+      localStorage.removeItem("JWTtoken");
     }
   }
   
