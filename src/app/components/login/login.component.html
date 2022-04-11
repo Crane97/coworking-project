@@ -1,13 +1,5 @@
 <div class = body>
-
-    <!-- BOTÓN CREAR CUENTA -->
-    <div class="example-button-row create-account">
-        <button mat-raised-button color="primary" (onclick)="registerWindow()">Create account</button>
-    </div>
-
     <div class = login>
-
-
         <!-- FORMULARIO -->
         <form [formGroup] = "form" (ngSubmit)="doLogin()">
             <img src="./assets/img/user.png" width="50%">
@@ -21,7 +13,10 @@
                 <input type="password" matInput autocomplete="off" formControlName = "password">
             </mat-form-field>
             <br>
-            <button type="submit" class = "ancho button" mat-raised-button color="primary" [disabled]="form.invalid">Login</button>
+            <button type="submit" class = "ancho button" mat-raised-button color="primary" [disabled]="form.invalid" >Login</button>
+            <br>
+            <button type="submit" class = "anchoaux button" mat-raised-button color="primary" routerLink="/register">Create account</button>
+            <button type="submit" class = "anchoaux button" mat-raised-button color="primary" routerLink="/dashboard">Dashboard</button>
         </form>
     </div>
 </div>

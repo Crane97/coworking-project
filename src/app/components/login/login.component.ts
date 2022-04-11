@@ -26,10 +26,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerWindow(){
-    this.router.navigateByUrl("register");
-  }
-
   doLogin() {
     this.service.login(this.form.value.user, this.form.value.password).subscribe(data => {
       //this.message = data.accesstoken;

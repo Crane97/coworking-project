@@ -38,8 +38,4 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl("login");
   }
 
-  backLogin(){
-    this.router.navigateByUrl("login");
-  }
-
 }
