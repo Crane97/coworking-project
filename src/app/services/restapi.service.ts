@@ -28,7 +28,7 @@ import { Usuario } from '../interfaces/usuario';
       });
       var params = new HttpParams().set("page", page);
       //console.log(params.get("page"))
-      return this.http.get<Usuario>("http://localhost:9090/api/user/users", { headers: reqHeader, params: params });
+      return this.http.get<Usuario>("http://localhost:9090/api/user/publicableUsers", { headers: reqHeader, params: params });
     }
 
     createUser(user : Usuario) {
