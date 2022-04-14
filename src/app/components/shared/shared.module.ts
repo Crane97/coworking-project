@@ -18,8 +18,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
-
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -38,7 +38,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     MatTooltipModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   exports:[
     MatSliderModule,
@@ -54,7 +56,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     MatTooltipModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

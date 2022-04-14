@@ -2,8 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
 import { RestapiService } from 'src/app/services/restapi.service';
-import { newArray } from '@angular/compiler/src/util';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-usuarios',

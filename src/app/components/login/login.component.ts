@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RestapiService } from 'src/app/services/restapi.service';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : RestapiService) {
     this.form = this.fb.group({
       user: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
 
     })
    }
@@ -43,5 +43,4 @@ export class LoginComponent implements OnInit {
     }
   );
   }
-
 }

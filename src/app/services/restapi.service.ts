@@ -60,5 +60,26 @@ import { Usuario } from '../interfaces/usuario';
       var params = new HttpParams().set("page", page);
       return this.http.get<Room>("http://localhost:9090/api/room/rooms");
     }
+
+    getUser(id : number){
+      var reqHeader = new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
+      });
+      const url = "http://localhost:9090/api/user/" + id;
+      console.log(url);
+      //console.log(params.get("page"))
+      return this.http.get<Usuario>(url);
+    }
+
+    getRoom(id : number){
+      var reqHeader = new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
+      });
+      const url = "http://localhost:9090/api/room/" + id;
+      console.log(url);
+      return this.http.get<Room>(url);
+    }
   }
   

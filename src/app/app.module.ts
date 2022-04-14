@@ -10,12 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 //Componentes
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { RoomComponent } from './components/dashboard/room/room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,

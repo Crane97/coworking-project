@@ -16,7 +16,7 @@
                 <td>{{room.capacity}}</td>
                 <td>{{room.roomType}}</td>
                 <td>
-                    <button class = "button" mat-raised-button color="primary" routerLink="/dashboard">
+                    <button class = "button" mat-raised-button color="primary" [routerLink]="['/dashboard/room/' + room.id]">
                         Consultar disponibilidad
                     </button>
                 </td>
