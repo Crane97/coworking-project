@@ -20,6 +20,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -40,7 +41,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatGridListModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
   exports:[
     MatSliderModule,
@@ -58,7 +60,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatGridListModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }

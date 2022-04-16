@@ -3,16 +3,15 @@
     <span class="example-spacer"></span>
     <button mat-button *ngFor="let item of menus" [routerLink]="item.redirect">{{item.nombre}}</button>
     <span class="example-spacer"></span>
-    <button mat-icon-button routerLink="/login" class="example-icon account_circle" aria-label="Example account_circle login">
-        <mat-icon>account_circle</mat-icon>
+    <h1 *ngIf="isLogged">Hola, {{logUser}}</h1>
+    <button mat-icon-button *ngIf="!isLogged" routerLink="/login" class="example-icon account_circle" aria-label="Example account_circle login">
+        Login
+        <mat-icon style="padding-right: 5px;">login</mat-icon>
     </button>
-    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>My account</button>
-        <button mat-menu-item>Login</button>
-        <button mat-menu-item>Create Account</button>
-        <button mat-menu-item>Report a bug</button>
-        <button mat-menu-item>Logout</button>
-    </mat-menu>
-    <h1 *ngIf="isLogged">Hola, Jorge</h1>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isLogged"><mat-icon>menu</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/dashboard/user/' + currentUser.id]">My account</button>
+            <button mat-menu-item>Report a bug</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
 </mat-toolbar>

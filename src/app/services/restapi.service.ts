@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Room } from '../interfaces/room';
 import { Token } from '../interfaces/token';
 import { Usuario } from '../interfaces/usuario';
+import * as jwt_decode from 'jwt-decode';
 
 
 
@@ -22,16 +23,46 @@ import { Usuario } from '../interfaces/usuario';
       return this.http.post<Token>("http://localhost:9090/login", body.toString(), options);
     }
 
+
+    userLogged(){
+      let token = this.getTokenInfo();
+      var decoded : any ;
+
+      if(token){
+        decoded = jwt_decode(token);
+        console.log(token, decoded);
+        console.log(decoded.sub);
+      }
+
+      return decoded;
+    }
+
     getTokenInfo(){
       var reqHeader = new HttpHeaders({
         //'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
       });
       const jwtoken = localStorage.getItem("JWTtoken");
-      const sub = JSON.parse(jwtoken);
       console.log(jwtoken);
-      console.log(sub);
       return localStorage.getItem('JWTtoken');
+    }
+
+    getTokenExpirationDate(token: string): Date {
+      var decoded:any = jwt_decode(token);
+      if (decoded.exp === undefined) return null;
+  
+      const date = new Date(0); 
+      date.setUTCSeconds(decoded.exp);
+      return date;
+    }
+  
+    isTokenExpired(token?: string): boolean {
+      if(!token) token = this.getTokenInfo();
+      if(!token) return true;
+  
+      const date = this.getTokenExpirationDate(token);
+      if(date === undefined) return false;
+      return !(date.valueOf() > new Date().valueOf());
     }
 
     getAllUsers(page: number): Observable<Usuario> {
@@ -67,7 +98,16 @@ import { Usuario } from '../interfaces/usuario';
         'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
       });
       const url = "http://localhost:9090/api/user/" + id;
-      console.log(url);
+      //console.log(params.get("page"))
+      return this.http.get<Usuario>(url);
+    }
+
+    getUserByUsername(username : String){
+      var reqHeader = new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
+      });
+      const url = "http://localhost:9090/api/user/username/" + username;
       //console.log(params.get("page"))
       return this.http.get<Usuario>(url);
     }
@@ -78,7 +118,6 @@ import { Usuario } from '../interfaces/usuario';
         'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
       });
       const url = "http://localhost:9090/api/room/" + id;
-      console.log(url);
       return this.http.get<Room>(url);
     }
   }

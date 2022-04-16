@@ -19,7 +19,6 @@ export class ProfileComponent implements OnInit {
       const id = <number>params['id'];
       if(id != null){
         this.service.getUser(id).subscribe(data => {
-          console.log(data);
           this.usuario = data;
         });
       }

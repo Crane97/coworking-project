@@ -23,9 +23,6 @@ export class SalasComponent implements OnInit {
   listAllRooms(){
     this.service.getAllRooms(this.page).subscribe(data => {
       this.rooms = data['content'];
-      console.log(data);
-      console.log(this.rooms[1]);
-      console.log(this.rooms);
     },
     (error) => {
       console.log(error.error.message);

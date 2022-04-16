@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
   doRegister(){
     this.usuario = this.form.value;
-    console.log(this.usuario);
+    //console.log(this.usuario);
     this.service.createUser(this.usuario).subscribe(data => {
       this.router.navigateByUrl("login");
     },

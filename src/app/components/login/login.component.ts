@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   doLogin() {
     this.service.login(this.form.value.user, this.form.value.password).subscribe(data => {
       //this.message = data.accesstoken;
-      console.log(data);
       localStorage.setItem("JWTtoken", data.access_token);
       this.router.navigateByUrl("dashboard");
       //console.log(data);

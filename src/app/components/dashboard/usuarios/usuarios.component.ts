@@ -23,9 +23,6 @@ export class UsuariosComponent implements OnInit {
   listAllUsers(){
     this.service.getAllUsers(this.page).subscribe(data => {
       this.usuarios = data['content'];
-      console.log(data);
-      console.log(this.usuarios[1]);
-      console.log(this.usuarios);
     },
       (error) => {
         console.log(error.error.message);
