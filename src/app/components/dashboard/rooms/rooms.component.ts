@@ -2,26 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Room } from 'src/app/interfaces/room';
 import { RestapiService } from 'src/app/services/restapi.service';
+import { RoomsService } from 'src/app/services/rooms.service';
 
 @Component({
-  selector: 'app-salas',
-  templateUrl: './salas.component.html',
-  styleUrls: ['./salas.component.css']
+  selector: 'app-rooms',
+  templateUrl: './rooms.component.html',
+  styleUrls: ['./rooms.component.css']
 })
-export class SalasComponent implements OnInit {
+export class RoomsComponent implements OnInit {
 
   page : number = 0;
   rooms : Room[];
   room : Room;
 
-  constructor(private http : HttpClient, private service : RestapiService) { }
+  constructor(private http : HttpClient, private roomService : RoomsService) { }
 
   ngOnInit(): void {
     this.listAllRooms();
   }
 
   listAllRooms(){
-    this.service.getAllRooms(this.page).subscribe(data => {
+    this.roomService.getAllRooms(this.page).subscribe(data => {
       this.rooms = data['content'];
     },
     (error) => {

@@ -2,26 +2,27 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { HttpClient } from '@angular/common/http';
 import { RestapiService } from 'src/app/services/restapi.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class UsuariosComponent implements OnInit {
+export class UsersComponent implements OnInit {
 
   page : number = 0;
   usuarios : Usuario[];
   usuario : Usuario;
   
-  constructor(private http : HttpClient, private service : RestapiService) { }
+  constructor(private http : HttpClient, private userService : UsersService) { }
 
   ngOnInit(): void {
     this.listAllUsers();
   }
 
   listAllUsers(){
-    this.service.getAllUsers(this.page).subscribe(data => {
+    this.userService.getAllUsers(this.page).subscribe(data => {
       this.usuarios = data['content'];
     },
       (error) => {

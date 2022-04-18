@@ -4,21 +4,21 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { SalasComponent } from './salas/salas.component';
-import { ContactoComponent } from './contacto/contacto.component';
+import { UsersComponent } from './users/users.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    InicioComponent,
+    HomeComponent,
     NavbarComponent,
-    UsuariosComponent,
-    SalasComponent,
-    ContactoComponent
+    UsersComponent,
+    RoomsComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,

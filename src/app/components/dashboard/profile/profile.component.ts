@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { RestapiService } from 'src/app/services/restapi.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +13,13 @@ export class ProfileComponent implements OnInit {
 
   usuario : Usuario;
 
-  constructor(private route : ActivatedRoute, private service : RestapiService) { }
+  constructor(private route : ActivatedRoute, private userService : UsersService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = <number>params['id'];
       if(id != null){
-        this.service.getUser(id).subscribe(data => {
+        this.userService.getUser(id).subscribe(data => {
           this.usuario = data;
         });
       }

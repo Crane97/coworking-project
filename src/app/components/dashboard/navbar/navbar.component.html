@@ -9,9 +9,9 @@
         <mat-icon style="padding-right: 5px;">login</mat-icon>
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isLogged"><mat-icon>account_circle</mat-icon></button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu" >
             <button mat-menu-item [routerLink]="['/dashboard/user/' + currentUser.id]">My account</button>
             <button mat-menu-item>Report a bug</button>
-            <button mat-menu-item (click)="logout()">Logout</button>
+            <button mat-menu-item (click)="logout()" routerLink="/login">Logout</button>
         </mat-menu>
 </mat-toolbar>

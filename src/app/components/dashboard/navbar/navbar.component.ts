@@ -5,6 +5,7 @@ import { RestapiService } from 'src/app/services/restapi.service';
 import * as jwt_decode from 'jwt-decode';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,23 +15,39 @@ import { ActivatedRoute } from '@angular/router';
 export class NavbarComponent implements OnInit {
   menus : Menu[] = [];
   decodedJWT : any;
-  currentUser : Usuario;
+  currentUser : Usuario = {
+    id : '0',
+    name : 'null',
+    surname : 'null',
+    email : 'null',
+    phone : 'null',
+    partner : false,
+    username : 'null',
+    password : 'null',
+    openToWork : false,
+    jobTitle : 'null',
+    publicable : false,
+    description : 'null',
+    roles : null,
+    reservation : null
+  };
   logUser : String;
   isLogged : Boolean = false;
+  idLogged : String;
 
-  constructor(private _menuService : MenuService, private restapi: RestapiService) { }
+  constructor(private _menuService : MenuService, private restapi: RestapiService, private userService : UsersService) { }
 
   ngOnInit(): void {
+    this.cargarMenu();
     this.decodedJWT = this.restapi.userLogged();
     console.log(this.decodedJWT);
     if(this.decodedJWT){
       this.isLogged = true;
       this.logUser = this.decodedJWT.sub;
-      this.restapi.getUserByUsername(this.logUser).subscribe(data => {
+      this.userService.getUserByUsername(this.logUser).subscribe(data => {
         this.currentUser = data;
       });
     }
-    this.cargarMenu();
   }
 
   cargarMenu(){

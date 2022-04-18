@@ -23,7 +23,6 @@ import * as jwt_decode from 'jwt-decode';
       return this.http.post<Token>("http://localhost:9090/login", body.toString(), options);
     }
 
-
     userLogged(){
       let token = this.getTokenInfo();
       var decoded : any ;
@@ -65,60 +64,8 @@ import * as jwt_decode from 'jwt-decode';
       return !(date.valueOf() > new Date().valueOf());
     }
 
-    getAllUsers(page: number): Observable<Usuario> {
-      /*
-      ESTE CÓDIGO SOLO SE UTILIZARÁ PARA LAS LLAMADAS EN LAS QUE SEA NECESARIO ESTAR LOGGEADO
-      var reqHeader = new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
-      });
-      */
-      var params = new HttpParams().set("page", page);
-      //console.log(params.get("page"))
-      return this.http.get<Usuario>("http://localhost:9090/api/user/publicableUsers", { params: params });
-    }
-
-    createUser(user : Usuario) {
-      return this.http.post("http://localhost:9090/api/user/add", user, { responseType: "text" });
-    }
-
     logout() {
       localStorage.removeItem("JWTtoken");
-    }
-
-    getAllRooms(page : number){
-      //console.log(params.get("page"))
-      var params = new HttpParams().set("page", page);
-      return this.http.get<Room>("http://localhost:9090/api/room/rooms");
-    }
-
-    getUser(id : number){
-      var reqHeader = new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
-      });
-      const url = "http://localhost:9090/api/user/" + id;
-      //console.log(params.get("page"))
-      return this.http.get<Usuario>(url);
-    }
-
-    getUserByUsername(username : String){
-      var reqHeader = new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
-      });
-      const url = "http://localhost:9090/api/user/username/" + username;
-      //console.log(params.get("page"))
-      return this.http.get<Usuario>(url);
-    }
-
-    getRoom(id : number){
-      var reqHeader = new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
-      });
-      const url = "http://localhost:9090/api/room/" + id;
-      return this.http.get<Room>(url);
     }
   }
   

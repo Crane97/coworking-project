@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { RestapiService } from 'src/app/services/restapi.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   form : FormGroup;
   usuario : Usuario;
 
-  constructor(private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : RestapiService) {
+  constructor(private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : UsersService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
