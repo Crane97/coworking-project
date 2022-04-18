@@ -10,8 +10,10 @@
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isLogged"><mat-icon>account_circle</mat-icon></button>
         <mat-menu #menu="matMenu" >
-            <button mat-menu-item [routerLink]="['/dashboard/user/' + currentUser.id]">My account</button>
-            <button mat-menu-item>Report a bug</button>
-            <button mat-menu-item (click)="logout()" routerLink="/login">Logout</button>
+            <button mat-menu-item [routerLink]="['/dashboard/user/' + currentUser.id]">Mi cuenta</button>
+            <button mat-menu-item>Editar mi perfil</button>
+            <button mat-menu-item>Ver lista de empresas</button>
+            <button mat-menu-item>Reportar a bug</button>
+            <button mat-menu-item (click)="logout()" routerLink="/login">Cerrar sesión</button>
         </mat-menu>
 </mat-toolbar>
