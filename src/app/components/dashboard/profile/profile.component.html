@@ -1,24 +1,18 @@
 <div class="container">
-    <mat-toolbar>
-        <span>{{usuario.name}} {{usuario.surname}}</span>
-    </mat-toolbar>
-    <table class="mat-elevation-z2">
-        <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Description</th>
-            <th>Email</th>
-        </tr>
-        <tbody>
-            <tr style="text-align: center;">
-                <td>{{usuario.username}}</td>
-                <td>{{usuario.name}}</td>
-                <td>{{usuario.surname}}</td>
-                <td>{{usuario.description}}</td>
-                <td>{{usuario.email}}</td>
-            </tr>
-        </tbody>
-
-    </table>
+    <mat-card class="mycard">
+        <mat-card-header>
+            <img mat-card-avatar src = "../../../../assets/img/person-male.png">
+            <mat-card-title>{{usuario.name}} {{usuario.surname}}</mat-card-title>
+            <mat-card-subtitle>{{usuario.username}} - {{usuario.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{usuario.jobTitle}}</p>
+            <p>{{usuario.description}}</p>
+        </mat-card-content>
+        <mat-card-footer>
+            <button mat-button color="primary">Editar perfil</button>
+            <button mat-button color="primary">Crear empresa</button>
+            <button mat-button color="primary">Asociar empresa</button>
+        </mat-card-footer>
+    </mat-card>
 </div>

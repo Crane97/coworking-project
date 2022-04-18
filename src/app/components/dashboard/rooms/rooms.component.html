@@ -2,25 +2,29 @@
     <mat-toolbar>
         <span>Nuestras salas</span>
     </mat-toolbar>
-      <table class="mat-elevation-z2">
-        <tr>
-            <th>Name</th>
-            <th>Capacity</th>
-            <th>Room Type</th>
-            <th>Reservar</th>
 
-        </tr>
-        <tbody>
-            <tr *ngFor="let room of rooms" style="text-align: center;">
-                <td>{{room.name}}</td>
-                <td>{{room.capacity}}</td>
-                <td>{{room.roomType}}</td>
-                <td>
-                    <button class = "button" mat-raised-button color="primary" [routerLink]="['/dashboard/room/' + room.id]">
-                        Consultar disponibilidad
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+    <div class="card" style="width: 90%; margin: auto;">
 
-    </table>
+        <mat-grid-list cols="4" rowHeight="400px">
+            <mat-grid-tile
+                *ngFor="let room of rooms"
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-card class="mycard">
+                    <mat-card-header>
+                        <img mat-card-avatar src = "../../../../assets/img/person-male.png">
+                        <mat-card-title>{{room.name}}</mat-card-title>
+                        <mat-card-subtitle>{{room.capacity}} personas</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>La sala es de tipo {{room.roomType}} y tiene una capacidad de {{room.capacity}}</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button mat-button color="primary" [routerLink]="['/dashboard/room/' + room.id]">Consultar horarios</button>
+                    </mat-card-footer>
+                </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+
+</div>
