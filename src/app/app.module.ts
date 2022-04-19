@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 import { RoomComponent } from './components/dashboard/room/room.component';
 import { EditProfileComponent } from './components/dashboard/edit-profile/edit-profile.component';
+import { BookRoomComponent } from './components/dashboard/book-room/book-room.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditProfileComponent } from './components/dashboard/edit-profile/edit-p
     RegisterComponent,
     ProfileComponent,
     RoomComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    BookRoomComponent
   ],
   imports: [
     BrowserModule,
