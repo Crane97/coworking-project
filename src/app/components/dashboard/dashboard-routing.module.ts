@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoomComponent } from './room/room.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path:'salas', component: RoomsComponent},
     {path:'user/:id', component: ProfileComponent},
     {path:'room/:id', component : RoomComponent },
+    {path:'user/edit/:id', component: EditProfileComponent},
     {path:'**', component: HomeComponent , pathMatch: 'full' }
   ]}
 ];

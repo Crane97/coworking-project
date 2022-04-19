@@ -1,0 +1,57 @@
+<div class="body register container">
+
+    <mat-toolbar>
+        <span>Editar usuario {{usuario.name}}</span>
+    </mat-toolbar>
+
+    <form [formGroup] = "form" class="example-form" (ngSubmit)="updateUser()">
+            <mat-form-field class="ancho" appearance="fill">
+                <mat-label>{{usuario.name}}</mat-label>
+                <input matInput placeholder="user.name" formControlName = "name">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.surname}}</mat-label>
+                <input matInput placeholder="usuario.surname" formControlName = "surname">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.email}}</mat-label>
+                <input matInput placeholder="usuario.email" formControlName = "email">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.phone}}</mat-label>
+                <input matInput placeholder="usuario.phone" formControlName = "phone">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.username}}</mat-label>
+                <input matInput placeholder="usuario.username" formControlName = "username">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.jobTitle}}</mat-label>
+                <input matInput placeholder="usuario.jobTitle" formControlName = "jobTitle">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{usuario.description}}</mat-label>
+                <input matInput placeholder="usuario.description" formControlName = "description">
+              </mat-form-field>
+              <!-- REVISAR COMO PONER CHECKBOX EN ESTOS CAMPOS -->
+              <mat-form-field appearance="fill">
+                <mat-label>Publicable</mat-label>
+                <mat-select formControlName = "publicable">
+                  <mat-option value="true">true</mat-option>
+                  <mat-option value="false">false</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>openToWork</mat-label>
+                <mat-select formControlName = "openToWork">
+                  <mat-option value="true">true</mat-option>
+                  <mat-option value="false">false</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="example-button-row">
+                <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Update</button>
+                <button type="cancel" mat-raised-button color="warn" style="margin: 10px;" [routerLink]="['/dashboard/user/' + usuario.id]">Cancel</button>
+              </div>
+      </form>
+
+</div>

@@ -46,4 +46,8 @@ export class UsersService {
     //console.log(params.get("page"))
     return this.http.get<Usuario>(url);
   }
+
+  updateUser(id : number, user : Usuario){
+    return this.http.put("http://localhost:9090/api/update/" + id, user, { responseType: "text" });
+  }
 }

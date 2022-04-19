@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',

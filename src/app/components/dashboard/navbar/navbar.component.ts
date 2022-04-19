@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   menus : Menu[] = [];
   decodedJWT : any;
   currentUser : Usuario = {
-    id : '0',
+    id : 0,
     name : 'null',
     surname : 'null',
     email : 'null',
