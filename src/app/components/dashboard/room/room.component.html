@@ -9,7 +9,7 @@
             <p>La sala es de tipo {{room.roomType}} y tiene una capacidad de {{room.capacity}}</p>
         </mat-card-content>
         <mat-card-footer>
-            <button mat-button color="primary">Reservar sala</button>
+            <button mat-button color="primary" [routerLink]="['/dashboard/room/' + room.id + '/reservation']">Reservar sala</button>
         </mat-card-footer>
     </mat-card>
 </div>

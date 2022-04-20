@@ -8,6 +8,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoomComponent } from './room/room.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path:'salas', component: RoomsComponent},
     {path:'user/:id', component: ProfileComponent},
     {path:'room/:id', component : RoomComponent },
+    {path:'room/:id/reservation', component : ReservationComponent},
     {path:'user/edit/:id', component: EditProfileComponent},
     {path:'**', component: HomeComponent , pathMatch: 'full' }
   ]}

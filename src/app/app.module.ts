@@ -13,7 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 import { RoomComponent } from './components/dashboard/room/room.component';
 import { EditProfileComponent } from './components/dashboard/edit-profile/edit-profile.component';
-import { BookRoomComponent } from './components/dashboard/book-room/book-room.component';
+import { ReservationComponent } from './components/dashboard/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { BookRoomComponent } from './components/dashboard/book-room/book-room.co
     ProfileComponent,
     RoomComponent,
     EditProfileComponent,
-    BookRoomComponent
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

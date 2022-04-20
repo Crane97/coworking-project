@@ -22,6 +22,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [],
@@ -44,7 +46,8 @@ import {MatCardModule} from '@angular/material/card';
     MatCheckboxModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatCardModule
+    MatCardModule,
+    MatNativeDateModule
   ],
   exports:[
     MatSliderModule,
@@ -64,7 +67,8 @@ import {MatCardModule} from '@angular/material/card';
     MatCheckboxModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatCardModule
+    MatCardModule,
+    MatRippleModule
   ]
 })
 export class SharedModule { }
