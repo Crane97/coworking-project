@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DayPilot } from '@daypilot/daypilot-lite-angular';
 import { Reservation } from 'src/app/interfaces/reservation';
 import { Room } from 'src/app/interfaces/room';
 import { ReservationsService } from 'src/app/services/reservations.service';

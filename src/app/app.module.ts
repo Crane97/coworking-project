@@ -15,6 +15,7 @@ import { RoomComponent } from './components/dashboard/rooms/room/room.component'
 import { EditProfileComponent } from './components/dashboard/user/edit-profile/edit-profile.component';
 import { ReservationComponent } from './components/dashboard/reservations/reservation/reservation.component';
 import { RecursiveReservationComponent } from './components/dashboard/reservations/recursive-reservation/recursive-reservation.component';
+import { DaysReservationComponent } from './components/dashboard/reservations/days-reservation/days-reservation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RecursiveReservationComponent } from './components/dashboard/reservatio
     RoomComponent,
     EditProfileComponent,
     ReservationComponent,
-    RecursiveReservationComponent
+    RecursiveReservationComponent,
+    DaysReservationComponent
   ],
   imports: [
     BrowserModule,
