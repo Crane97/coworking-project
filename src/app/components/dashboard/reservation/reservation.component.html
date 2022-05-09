@@ -3,15 +3,62 @@
         <span>Reservar sala {{room.name}}</span>
     </mat-toolbar>
 
-    <!-- RESERVATION ON A FIXED PLACE -->
+    <!-- RECURSIVE RESERVATION -->
     <mat-card class="mycard">
         <mat-card-header>
             <img mat-card-avatar src = "../../../../assets/img/person-male.png">
-            <mat-card-title>{{room.name}}</mat-card-title>
-            <mat-card-subtitle>{{room.capacity}} personas</mat-card-subtitle>
+            <mat-card-title>Reserva recursiva</mat-card-title>
+            <mat-card-subtitle>Reservar todas las semanas a la misma hora</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>La sala es de tipo {{room.roomType}} y tiene una capacidad de {{room.capacity}}</p>
+            <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput placeholder="Descripción" formControlName = "description">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de comienzo</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  
+                  <br>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Fecha de fin</mat-label>
+                    <input matInput [matDatepicker]="picker1">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+
+                  <br>
+                  <br>
+                  
+                  <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Hora de entrada</mat-label>
+                    <mat-select>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Hora de salida</mat-label>
+                    <mat-select>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Sitio</mat-label>
+                    <input matInput placeholder="Sitio" formControlName = "place">
+                </mat-form-field>
+                <br>              
+                  <div class="example-button-row">
+                    <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Reservar</button>
+                  </div>
+          </form>   
         </mat-card-content>
         <mat-card-footer>
             <button mat-button color="primary">Reservar sala</button>
@@ -22,7 +69,7 @@
     <mat-card class="mycard">
         <mat-card-header>
             <img mat-card-avatar src = "../../../../assets/img/person-male.png">
-            <mat-card-title>Reserva normal</mat-card-title>
+            <mat-card-title>Reserva simple</mat-card-title>
             <mat-card-subtitle>Reserva para un día, a una hora.</mat-card-subtitle>
         </mat-card-header>
         <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
@@ -33,80 +80,23 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="pickerNormal">
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
+                <mat-datepicker #pickerNormal></mat-datepicker>
+                <!-- SUBMIT THE DATE AND CALL getAvailableTime() -->
               </mat-form-field>
               <br>
               <br>
               <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de entrada</mat-label>
                 <mat-select>
-                    <mat-option value="one">8:00</mat-option>
-                    <mat-option value="two">8:30</mat-option>
-                    <mat-option value="one">9:00</mat-option>
-                    <mat-option value="two">9:30</mat-option>
-                    <mat-option value="one">10:00</mat-option>
-                    <mat-option value="two">10:30</mat-option>
-                    <mat-option value="one">11:00</mat-option>
-                    <mat-option value="two">11:30</mat-option>
-                    <mat-option value="one">12:00</mat-option>
-                    <mat-option value="two">12:30</mat-option>
-                    <mat-option value="one">13:00</mat-option>
-                    <mat-option value="two">13:30</mat-option>
-                    <mat-option value="one">14:00</mat-option>
-                    <mat-option value="two">14:30</mat-option>
-                    <mat-option value="one">15:00</mat-option>
-                    <mat-option value="two">15:30</mat-option>
-                    <mat-option value="one">16:00</mat-option>
-                    <mat-option value="two">16:30</mat-option>
-                    <mat-option value="one">17:00</mat-option>
-                    <mat-option value="two">17:30</mat-option>
-                    <mat-option value="one">18:00</mat-option>
-                    <mat-option value="two">18:30</mat-option>
-                    <mat-option value="one">19:00</mat-option>
-                    <mat-option value="two">19:30</mat-option>
-                    <mat-option value="one">20:00</mat-option>
-                    <mat-option value="two">20:30</mat-option>
-                    <mat-option value="one">21:00</mat-option>
-                    <mat-option value="two">21:30</mat-option>
-                    <mat-option value="two">22:00</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de salida</mat-label>
                 <mat-select>
-                    <mat-option value="one">8:00</mat-option>
-                    <mat-option value="two">8:30</mat-option>
-                    <mat-option value="one">9:00</mat-option>
-                    <mat-option value="two">9:30</mat-option>
-                    <mat-option value="one">10:00</mat-option>
-                    <mat-option value="two">10:30</mat-option>
-                    <mat-option value="one">11:00</mat-option>
-                    <mat-option value="two">11:30</mat-option>
-                    <mat-option value="one">12:00</mat-option>
-                    <mat-option value="two">12:30</mat-option>
-                    <mat-option value="one">13:00</mat-option>
-                    <mat-option value="two">13:30</mat-option>
-                    <mat-option value="one">14:00</mat-option>
-                    <mat-option value="two">14:30</mat-option>
-                    <mat-option value="one">15:00</mat-option>
-                    <mat-option value="two">15:30</mat-option>
-                    <mat-option value="one">16:00</mat-option>
-                    <mat-option value="two">16:30</mat-option>
-                    <mat-option value="one">17:00</mat-option>
-                    <mat-option value="two">17:30</mat-option>
-                    <mat-option value="one">18:00</mat-option>
-                    <mat-option value="two">18:30</mat-option>
-                    <mat-option value="one">19:00</mat-option>
-                    <mat-option value="two">19:30</mat-option>
-                    <mat-option value="one">20:00</mat-option>
-                    <mat-option value="two">20:30</mat-option>
-                    <mat-option value="one">21:00</mat-option>
-                    <mat-option value="two">21:30</mat-option>
-                    <mat-option value="two">22:00</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
@@ -125,17 +115,122 @@
     <mat-card class="mycard">
         <mat-card-header>
             <img mat-card-avatar src = "../../../../assets/img/person-male.png">
-            <mat-card-title>{{room.name}}</mat-card-title>
-            <mat-card-subtitle>{{room.capacity}} personas</mat-card-subtitle>
+            <mat-card-title>Reservar todos los días</mat-card-title>
+            <mat-card-subtitle>Reservar la misma hora todos los días hasta una fecha concreta</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>La sala es de tipo {{room.roomType}} y tiene una capacidad de {{room.capacity}}</p>
+            <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput placeholder="Descripción" formControlName = "description">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha desde la que quieres reservar</mat-label>
+                    <input matInput [matDatepicker]="pickerd">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="pickerd"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerd></mat-datepicker>
+                  </mat-form-field>
+                  
+                  <br>
+                  <br>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Fecha hasta la que quieres reservar</mat-label>
+                    <input matInput [matDatepicker]="pickerh">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="pickerh"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerh></mat-datepicker>
+                  </mat-form-field>
+                  
+                  <br>
+                  <br>
+                  
+                  <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Hora de entrada</mat-label>
+                    <mat-select>
+                        <mat-option value="one">8:00</mat-option>
+                        <mat-option value="two">8:30</mat-option>
+                        <mat-option value="one">9:00</mat-option>
+                        <mat-option value="two">9:30</mat-option>
+                        <mat-option value="one">10:00</mat-option>
+                        <mat-option value="two">10:30</mat-option>
+                        <mat-option value="one">11:00</mat-option>
+                        <mat-option value="two">11:30</mat-option>
+                        <mat-option value="one">12:00</mat-option>
+                        <mat-option value="two">12:30</mat-option>
+                        <mat-option value="one">13:00</mat-option>
+                        <mat-option value="two">13:30</mat-option>
+                        <mat-option value="one">14:00</mat-option>
+                        <mat-option value="two">14:30</mat-option>
+                        <mat-option value="one">15:00</mat-option>
+                        <mat-option value="two">15:30</mat-option>
+                        <mat-option value="one">16:00</mat-option>
+                        <mat-option value="two">16:30</mat-option>
+                        <mat-option value="one">17:00</mat-option>
+                        <mat-option value="two">17:30</mat-option>
+                        <mat-option value="one">18:00</mat-option>
+                        <mat-option value="two">18:30</mat-option>
+                        <mat-option value="one">19:00</mat-option>
+                        <mat-option value="two">19:30</mat-option>
+                        <mat-option value="one">20:00</mat-option>
+                        <mat-option value="two">20:30</mat-option>
+                        <mat-option value="one">21:00</mat-option>
+                        <mat-option value="two">21:30</mat-option>
+                        <mat-option value="two">22:00</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Hora de salida</mat-label>
+                    <mat-select>
+                        <mat-option value="one">8:00</mat-option>
+                        <mat-option value="two">8:30</mat-option>
+                        <mat-option value="one">9:00</mat-option>
+                        <mat-option value="two">9:30</mat-option>
+                        <mat-option value="one">10:00</mat-option>
+                        <mat-option value="two">10:30</mat-option>
+                        <mat-option value="one">11:00</mat-option>
+                        <mat-option value="two">11:30</mat-option>
+                        <mat-option value="one">12:00</mat-option>
+                        <mat-option value="two">12:30</mat-option>
+                        <mat-option value="one">13:00</mat-option>
+                        <mat-option value="two">13:30</mat-option>
+                        <mat-option value="one">14:00</mat-option>
+                        <mat-option value="two">14:30</mat-option>
+                        <mat-option value="one">15:00</mat-option>
+                        <mat-option value="two">15:30</mat-option>
+                        <mat-option value="one">16:00</mat-option>
+                        <mat-option value="two">16:30</mat-option>
+                        <mat-option value="one">17:00</mat-option>
+                        <mat-option value="two">17:30</mat-option>
+                        <mat-option value="one">18:00</mat-option>
+                        <mat-option value="two">18:30</mat-option>
+                        <mat-option value="one">19:00</mat-option>
+                        <mat-option value="two">19:30</mat-option>
+                        <mat-option value="one">20:00</mat-option>
+                        <mat-option value="two">20:30</mat-option>
+                        <mat-option value="one">21:00</mat-option>
+                        <mat-option value="two">21:30</mat-option>
+                        <mat-option value="two">22:00</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="ancho" appearance="fill">
+                    <mat-label>Sitio</mat-label>
+                    <input matInput placeholder="Sitio" formControlName = "place">
+                </mat-form-field>
+                <br>              
+                  <div class="example-button-row">
+                    <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Reservar</button>
+                  </div>
+          </form>   
         </mat-card-content>
         <mat-card-footer>
             <button mat-button color="primary">Reservar sala</button>
         </mat-card-footer>
     </mat-card>
-
     
     <button type="cancel" mat-raised-button color="warn" style="margin: 10px;" [routerLink]="['/dashboard/room/' + room.id]">Cancel</button>
 </div>

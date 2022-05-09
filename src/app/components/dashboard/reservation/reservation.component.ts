@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DayPilot } from '@daypilot/daypilot-lite-angular';
 import { Reservation } from 'src/app/interfaces/reservation';
 import { Room } from 'src/app/interfaces/room';
+import { ReservationsService } from 'src/app/services/reservations.service';
 import { RoomsService } from 'src/app/services/rooms.service';
 
 @Component({
@@ -15,8 +17,10 @@ export class ReservationComponent implements OnInit {
   form : FormGroup;
   room : Room;
   reservation : Reservation;
+  availableTime : String[];
+  currentDate : any;
 
-  constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService) {
+  constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {
     this.form = this.fb.group({
       description: ['', Validators.required],
       start: ['', Validators.required],
@@ -35,6 +39,18 @@ export class ReservationComponent implements OnInit {
         });
       }
     });
+  }
+
+  getAvailableTime() : void{
+    if(this.currentDate){
+      this.reservationService.getReservationsByRoomByDay(this.room.id, this.currentDate).subscribe(data =>{
+        this.availableTime = data;
+      });
+    }
+  }
+
+  getCurrentDate() : void {
+    
   }
 
   newReservation() {

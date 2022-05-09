@@ -3,7 +3,7 @@
     <span class="example-spacer"></span>
     <button mat-button *ngFor="let item of menus" [routerLink]="item.redirect">{{item.nombre}}</button>
     <span class="example-spacer"></span>
-    <h1 *ngIf="isLogged">Hola, {{logUser}}</h1>
+    <button mat-button>Hola, {{logUser}}</button>
     <button mat-icon-button *ngIf="!isLogged" routerLink="/login" class="example-icon account_circle" aria-label="Example account_circle login">
         Login
         <mat-icon style="padding-right: 5px;">login</mat-icon>
