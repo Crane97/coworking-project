@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
-import { RoomsComponent } from './rooms/rooms.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RoomComponent } from './room/room.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ReservationComponent } from './reservation/reservation.component';
+import { UsersComponent } from './user/users/users.component';
+import { RoomsComponent } from './rooms/rooms/rooms.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { RoomComponent } from './rooms/room/room.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { ReservationComponent } from './reservations/reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[

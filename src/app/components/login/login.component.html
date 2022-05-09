@@ -2,16 +2,23 @@
     <div class = login>
         <!-- FORMULARIO -->
         <form [formGroup] = "form" (ngSubmit)="doLogin()">
+
+            <div class="logo">
             <img src="./assets/img/user.png" width="50%">
+            </div>
+
             <h1>Login</h1>
+
             <mat-form-field class = "ancho" appearance="fill">
                 <mat-label>User</mat-label>
                 <input matInput type="text" autocomplete="off" formControlName = "user">
             </mat-form-field>
+
             <mat-form-field class = "ancho" appearance="fill">
                 <mat-label>Password</mat-label>
                 <input type="password" matInput autocomplete="off" formControlName = "password">
             </mat-form-field>
+
             <br>
             <button type="submit" class = "ancho button" mat-raised-button color="primary" [disabled]="form.invalid" >Login</button>
             <br>

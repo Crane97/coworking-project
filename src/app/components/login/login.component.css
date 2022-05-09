@@ -16,6 +16,11 @@
     width: 80%;
 }
 
+.logo {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 .anchoaux{
     width: 40%;
     padding: 5px;

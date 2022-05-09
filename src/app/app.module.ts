@@ -10,10 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 //Componentes
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ProfileComponent } from './components/dashboard/profile/profile.component';
-import { RoomComponent } from './components/dashboard/room/room.component';
-import { EditProfileComponent } from './components/dashboard/edit-profile/edit-profile.component';
-import { ReservationComponent } from './components/dashboard/reservation/reservation.component';
+import { ProfileComponent } from './components/dashboard/user/profile/profile.component';
+import { RoomComponent } from './components/dashboard/rooms/room/room.component';
+import { EditProfileComponent } from './components/dashboard/user/edit-profile/edit-profile.component';
+import { ReservationComponent } from './components/dashboard/reservations/reservation/reservation.component';
+import { RecursiveReservationComponent } from './components/dashboard/reservations/recursive-reservation/recursive-reservation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReservationComponent } from './components/dashboard/reservation/reserva
     ProfileComponent,
     RoomComponent,
     EditProfileComponent,
-    ReservationComponent
+    ReservationComponent,
+    RecursiveReservationComponent
   ],
   imports: [
     BrowserModule,
