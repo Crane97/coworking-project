@@ -6,26 +6,29 @@
     <!-- NORMAL RESERVATION (FOR A DAY, FOR A TIME) -->
     <mat-card class="mycard">
         <mat-card-header>
-            <img mat-card-avatar src = "../../../../assets/img/person-male.png">
+            <img mat-card-avatar src = {{room.coverImage}}>
             <mat-card-title>Reserva simple</mat-card-title>
             <mat-card-subtitle>Reserva para un día, a una hora.</mat-card-subtitle>
         </mat-card-header>
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="pickerNormal">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
+            <mat-datepicker #pickerNormal></mat-datepicker>
+            <!-- SUBMIT THE DATE AND CALL getAvailableTime() -->
+          </mat-form-field>
+          <br>
+          <button mat-button color="primary">Consultar horario</button>
+          <br>
+
+
         <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Descripción</mat-label>
                 <input matInput placeholder="Descripción" formControlName = "description">
             </mat-form-field>
             <br>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="pickerNormal">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
-                <mat-datepicker #pickerNormal></mat-datepicker>
-                <!-- SUBMIT THE DATE AND CALL getAvailableTime() -->
-              </mat-form-field>
-              <br>
-              <br>
               <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de entrada</mat-label>
                 <mat-select>

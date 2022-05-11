@@ -3,5 +3,7 @@ export interface Room{
     name : string;
     capacity : number;
     roomType : string;
+    coverImage : string;
+    images : string[];
     reservation : Array<any>;
 }
