@@ -15,6 +15,7 @@ export class ReservationComponent implements OnInit {
 
   form : FormGroup;
   room : Room;
+  dateToday : String = "";
   reservation : Reservation;
   availableTime : String[];
   currentDate : any;
@@ -48,12 +49,14 @@ export class ReservationComponent implements OnInit {
     }
   }
 
-  getCurrentDate() : void {
-    
+  getCurrentDate(event) : void {
+    this.dateToday = event;
+    console.log(this.dateToday);
+    console.log("he entrado en el getCurrentDate()");
   }
 
   newReservation() {
-
+    //Llamada al servicio para crear la nueva reserva
   }
 
 }
