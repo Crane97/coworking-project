@@ -17,7 +17,7 @@ export class DaysReservationComponent implements OnInit {
   form : FormGroup;
   room : Room;
   reservation : Reservation;
-  availableTime : String[];
+  availableTime : number[];
   currentDate : any;
 
   constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {

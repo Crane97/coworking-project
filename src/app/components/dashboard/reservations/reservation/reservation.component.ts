@@ -17,7 +17,8 @@ export class ReservationComponent implements OnInit {
   room : Room;
   dateToday : Date;
   reservation : Reservation;
-  availableTime : String[];
+  availableTime : number[];
+  schedules : any;
   currentDate : any;
 
   constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {
@@ -41,26 +42,31 @@ export class ReservationComponent implements OnInit {
   }
 
   getAvailableTime() : void{
-    if(this.currentDate){
-      this.reservationService.getReservationsByRoomByDay(this.room.id, this.currentDate).subscribe(data =>{
-        this.availableTime = data;
-      });
-    }
+    this.reservationService.getReservationsByRoomByDay(this.room.id, this.dateToday).subscribe(data =>{
+      this.availableTime = data;
+      const aux = this.availableTime || {};
+      console.log(this.availableTime);
+      for(let i = 0; i < this.availableTime.length; i++){
+        aux[i] = this.availableTime[i][0] + ":" + this.availableTime[i][1];
+      }
+      this.schedules = aux;
+      console.log(this.schedules);
+    });
+    
   }
 
   getCurrentDate(event) : void {
-
-
     this.dateToday = new Date(event);
     //this.dateToday = this.dateToday.replace(" ", "");
     console.log(this.dateToday);
     console.log(this.dateToday.toLocaleDateString("es-ES"));
+    this.getAvailableTime();
   }
 
   newReservation(){
     console.log("llamada newReservation()");
     this.reservationService.getReservationsByRoomByDay(this.room.id, this.dateToday).subscribe(data=>{
-
+      
     });
   }
 
