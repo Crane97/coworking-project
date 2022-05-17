@@ -9,7 +9,7 @@ export class ReservationsService {
 
   constructor(private http: HttpClient) { }
 
-  getReservationsByRoomByDay(roomid : number, day : String) : Observable<String[]>{
-    return this.http.get<String[]>("http://localhost:9090/api/reservation/room/" + roomid +"/day/" + day);
+  getReservationsByRoomByDay(roomid : number, day : Date) : Observable<String[]>{
+    return this.http.get<String[]>("http://localhost:9090/api/reservation/room/" + roomid +"/day/" + day.toLocaleDateString("es-ES"));
   }
 }

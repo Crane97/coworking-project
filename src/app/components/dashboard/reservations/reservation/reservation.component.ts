@@ -15,7 +15,7 @@ export class ReservationComponent implements OnInit {
 
   form : FormGroup;
   room : Room;
-  dateToday : String = "";
+  dateToday : Date;
   reservation : Reservation;
   availableTime : String[];
   currentDate : any;
@@ -23,9 +23,8 @@ export class ReservationComponent implements OnInit {
   constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {
     this.form = this.fb.group({
       description: ['', Validators.required],
-      start: ['', Validators.required],
-      end: ['', Validators.required],
-      status: [''],
+      start: [''],
+      end: [''],
       place: ['']
     })
   }
@@ -50,13 +49,19 @@ export class ReservationComponent implements OnInit {
   }
 
   getCurrentDate(event) : void {
-    this.dateToday = event;
+
+
+    this.dateToday = new Date(event);
+    //this.dateToday = this.dateToday.replace(" ", "");
     console.log(this.dateToday);
-    console.log("he entrado en el getCurrentDate()");
+    console.log(this.dateToday.toLocaleDateString("es-ES"));
   }
 
-  newReservation() {
-    //Llamada al servicio para crear la nueva reserva
+  newReservation(){
+    console.log("llamada newReservation()");
+    this.reservationService.getReservationsByRoomByDay(this.room.id, this.dateToday).subscribe(data=>{
+
+    });
   }
 
 }

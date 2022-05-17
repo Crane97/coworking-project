@@ -15,7 +15,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Seleccionar fecha</mat-label>
             <input matInput [matDatepicker]="pickerNormal" (dateInput)="getCurrentDate($event.value)">
-            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
             <mat-datepicker #pickerNormal></mat-datepicker>
           </mat-form-field>
@@ -32,12 +32,16 @@
               <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de entrada</mat-label>
                 <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de salida</mat-label>
-                <mat-select>
+                <mat-select required>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
