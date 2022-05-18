@@ -31,7 +31,7 @@
             <br>
               <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de entrada</mat-label>
-                <mat-select>
+                <mat-select formControlName="start" required>
                   <mat-option *ngFor="let schedule of schedules" [value]="schedule">
                     {{schedule}}
                   </mat-option>
@@ -40,7 +40,7 @@
             <br>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Hora de salida</mat-label>
-                <mat-select required>
+                <mat-select formControlName="end" required>
                   <mat-option *ngFor="let schedule of schedules" [value]="schedule">
                     {{schedule}}
                   </mat-option>

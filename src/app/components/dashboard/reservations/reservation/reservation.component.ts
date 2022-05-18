@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Reservation } from 'src/app/interfaces/reservation';
 import { Room } from 'src/app/interfaces/room';
+import { Usuario } from 'src/app/interfaces/usuario';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { RoomsService } from 'src/app/services/rooms.service';
 
@@ -20,14 +21,10 @@ export class ReservationComponent implements OnInit {
   availableTime : number[];
   schedules : any;
   currentDate : any;
+  currentUser : Usuario;
 
   constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {
-    this.form = this.fb.group({
-      description: ['', Validators.required],
-      start: [''],
-      end: [''],
-      place: ['']
-    })
+    
   }
 
   ngOnInit(): void {
@@ -36,6 +33,16 @@ export class ReservationComponent implements OnInit {
       if(id != null){
         this.roomService.getRoom(id).subscribe(data => {
           this.room = data;
+          console.log(this.room);
+          this.form = this.fb.group({
+            description: ['', Validators.required],
+            start: [''],
+            end: [''],
+            place: [''],
+            room: this.room,
+            user: this.currentUser
+          });
+          console.log(this.form);
         });
       }
     });
@@ -45,27 +52,23 @@ export class ReservationComponent implements OnInit {
     this.reservationService.getReservationsByRoomByDay(this.room.id, this.dateToday).subscribe(data =>{
       this.availableTime = data;
       const aux = this.availableTime || {};
-      console.log(this.availableTime);
       for(let i = 0; i < this.availableTime.length; i++){
         aux[i] = this.availableTime[i][0] + ":" + this.availableTime[i][1];
       }
       this.schedules = aux;
-      console.log(this.schedules);
     });
-    
   }
 
   getCurrentDate(event) : void {
     this.dateToday = new Date(event);
-    //this.dateToday = this.dateToday.replace(" ", "");
-    console.log(this.dateToday);
-    console.log(this.dateToday.toLocaleDateString("es-ES"));
     this.getAvailableTime();
   }
 
   newReservation(){
+    this.reservation = this.form.value;
+    console.log(this.form);
     console.log("llamada newReservation()");
-    this.reservationService.getReservationsByRoomByDay(this.room.id, this.dateToday).subscribe(data=>{
+    this.reservationService.addNewReservation(this.reservation).subscribe(data=>{
       
     });
   }
