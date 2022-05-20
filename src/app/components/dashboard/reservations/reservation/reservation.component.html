@@ -12,18 +12,18 @@
         </mat-card-header>
         <div>Selecciona la fecha en la que vas a querer reservar</div>
         <br>
-        <mat-form-field appearance="fill">
-          <mat-label>Seleccionar fecha</mat-label>
-          <input matInput [matDatepicker]="pickerNormal" (dateInput)="getCurrentDate($event.value)">
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
-          <mat-datepicker #pickerNormal></mat-datepicker>
-        </mat-form-field>
+        <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccionar fecha</mat-label>
+            <input matInput [matDatepicker]="pickerNormal" formControlName="date" (dateInput)="getCurrentDate($event.value)">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
+            <mat-datepicker #pickerNormal></mat-datepicker>
+          </mat-form-field>
         <br>
         <br>
           
-
-        <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()" *ngIf="dateToday">
+        <div *ngIf="dateToday">
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Descripción</mat-label>
                 <input matInput placeholder="Descripción" formControlName = "description">
@@ -55,6 +55,7 @@
               <div class="example-button-row">
                 <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Reservar</button>
               </div>
+            </div>
       </form>
     </mat-card>
     

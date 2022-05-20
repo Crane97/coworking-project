@@ -36,6 +36,7 @@ export class ReservationComponent implements OnInit {
           console.log(this.room);
           this.form = this.fb.group({
             description: ['', Validators.required],
+            date : [''],
             start: [''],
             end: [''],
             place: [''],

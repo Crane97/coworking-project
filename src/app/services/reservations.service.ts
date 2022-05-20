@@ -15,6 +15,6 @@ export class ReservationsService {
   }
 
   addNewReservation(reservation : Reservation){
-    return this.http.post("http://localhost:9090/api/reservation/add", reservation, { responseType: "text" });
+    return this.http.post("http://localhost:9090/api/reservation/add/normalReservation", reservation, { responseType: "text" });
   }
 }
