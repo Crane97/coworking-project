@@ -57,10 +57,12 @@ export class ReservationComponent implements OnInit {
         aux[i] = this.availableTime[i][0] + ":" + this.availableTime[i][1];
       }
       this.schedules = aux;
+      console.log(this.schedules);
     });
   }
 
   getCurrentDate(event) : void {
+    console.log("getCurrentDate");
     this.dateToday = new Date(event);
     this.getAvailableTime();
   }
@@ -69,6 +71,7 @@ export class ReservationComponent implements OnInit {
     this.reservation = this.form.value;
     console.log(this.form);
     console.log("llamada newReservation()");
+    console.log(this.reservation);
     this.reservationService.addNewReservation(this.reservation).subscribe(data=>{
       
     });

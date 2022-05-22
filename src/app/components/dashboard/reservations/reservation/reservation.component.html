@@ -16,7 +16,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Seleccionar fecha</mat-label>
             <input matInput [matDatepicker]="pickerNormal" formControlName="date" (dateInput)="getCurrentDate($event.value)">
-            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
             <mat-datepicker #pickerNormal></mat-datepicker>
           </mat-form-field>
