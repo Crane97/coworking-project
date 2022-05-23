@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Reservation } from 'src/app/interfaces/reservation';
+import { Reservation } from 'src/app/interfaces/Reservations/reservation';
 import { Room } from 'src/app/interfaces/room';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { RoomsService } from 'src/app/services/rooms.service';

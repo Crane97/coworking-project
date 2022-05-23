@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Reservation } from '../interfaces/reservation';
+import { Reservation } from '../interfaces/Reservations/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,9 @@ export class ReservationsService {
 
   addNewReservation(reservation : Reservation){
     return this.http.post("http://localhost:9090/api/reservation/add/normalReservation", reservation, { responseType: "text" });
+  }
+
+  getReservationsByUserId(userid : number){
+    return this.http.get<Reservation[]>("http://localhost:9090/api/reservation/myReservations/" + userid);
   }
 }

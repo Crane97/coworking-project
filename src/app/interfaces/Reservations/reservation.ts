@@ -1,5 +1,5 @@
-import { Room } from "./room";
-import { Usuario } from "./usuario";
+import { Room } from "../room";
+import { Usuario } from "../usuario";
 
 export interface Reservation{
     id : number;

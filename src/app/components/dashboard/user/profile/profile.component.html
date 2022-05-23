@@ -14,6 +14,7 @@
             <button mat-button color="primary">Crear empresa</button>
             <button mat-button color="primary">Asociar empresa</button>
             <button mat-button color="primary">Mi empresa</button>
+            <button mat-button color="primary" [routerLink]="['/dashboard/user/myReservations/' + usuario.id]">Mis reservas</button>
         </mat-card-footer>
     </mat-card>
 </div>

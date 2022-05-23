@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Reservation } from 'src/app/interfaces/reservation';
+import { Reservation } from 'src/app/interfaces/Reservations/reservation';
 import { Room } from 'src/app/interfaces/room';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ReservationsService } from 'src/app/services/reservations.service';
+import { RestapiService } from 'src/app/services/restapi.service';
 import { RoomsService } from 'src/app/services/rooms.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-reservation',
@@ -18,19 +21,24 @@ export class ReservationComponent implements OnInit {
   room : Room;
   dateToday : Date;
   reservation : Reservation;
+
   availableTime : number[];
   schedules : any;
   currentDate : any;
   currentUser : Usuario;
 
-  constructor(private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService) {
+  decodedJWT : any;
+  logUser : String;
+
+
+  constructor(private _snackBar: MatSnackBar, private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService, private restapi : RestapiService, private userService: UsersService) {
     
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = <number>params['id'];
-      if(id != null){
+      if(id != null){        
         this.roomService.getRoom(id).subscribe(data => {
           this.room = data;
           console.log(this.room);
@@ -41,10 +49,22 @@ export class ReservationComponent implements OnInit {
             end: [''],
             place: [''],
             room: this.room,
-            user: this.currentUser
+            user: [''],
           });
-          console.log(this.form);
         });
+        this.decodedJWT = this.restapi.userLogged();
+        console.log(this.decodedJWT);
+        if(this.decodedJWT){
+          this.logUser = this.decodedJWT.sub;
+          console.log("el logUser "+this.logUser);
+          this.userService.getUserByUsername(this.logUser).subscribe(data => {
+            this.currentUser = data;
+            console.log("Soy el usuario " + this.currentUser);
+            console.log(this.currentUser);
+            this.form.controls['user'].setValue(this.currentUser);
+            console.log(this.form);
+          });
+        }
       }
     });
   }
@@ -57,7 +77,6 @@ export class ReservationComponent implements OnInit {
         aux[i] = this.availableTime[i][0] + ":" + this.availableTime[i][1];
       }
       this.schedules = aux;
-      console.log(this.schedules);
     });
   }
 
@@ -69,12 +88,18 @@ export class ReservationComponent implements OnInit {
 
   newReservation(){
     this.reservation = this.form.value;
-    console.log(this.form);
     console.log("llamada newReservation()");
-    console.log(this.reservation);
+    console.log(this.currentUser);
     this.reservationService.addNewReservation(this.reservation).subscribe(data=>{
-      
+      this._snackBar.open('Se ha creado la reserva correctamente', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+
+        //this.router.navigateByUrl("login"); que te enlace a mis reservas
     });
+  }
+  );
   }
 
 }

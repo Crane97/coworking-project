@@ -11,6 +11,7 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { RecursiveReservationComponent } from './reservations/recursive-reservation/recursive-reservation.component';
 import { DaysReservationComponent } from './reservations/days-reservation/days-reservation.component';
+import { MyreservationsComponent } from './reservations/myreservations/myreservations.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path:'room/:id/daysReservation', component : DaysReservationComponent},
     {path:'room/:id/recursiveReservation', component : RecursiveReservationComponent},
     {path:'user/edit/:id', component: EditProfileComponent},
+    {path:'user/myReservations/:id', component : MyreservationsComponent},
     {path:'**', component: HomeComponent , pathMatch: 'full' }
   ]}
 ];
