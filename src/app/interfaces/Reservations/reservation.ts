@@ -2,7 +2,6 @@ import { Room } from "../room";
 import { Usuario } from "../usuario";
 
 export interface Reservation{
-    id : number;
     description : string;
     date : any;
     start : any;

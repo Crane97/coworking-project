@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { recursiveReservation } from '../interfaces/Reservations/recursiveReservation';
 import { Reservation } from '../interfaces/Reservations/reservation';
 
 @Injectable({
@@ -20,5 +21,9 @@ export class ReservationsService {
 
   getReservationsByUserId(userid : number){
     return this.http.get<Reservation[]>("http://localhost:9090/api/reservation/myReservations/" + userid);
+  }
+
+  addRecursiveReservation(reservation : recursiveReservation){
+    return this.http.post("http://localhost:9090/api/reservation/add/reservation/recursive", reservation, { responseType: "text" });
   }
 }
