@@ -15,7 +15,7 @@
         <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
             <mat-form-field appearance="fill">
                 <mat-label>Fecha de inicio</mat-label>
-                <input matInput [matDatepicker]="pickerStart" formControlName="dateStart">
+                <input matInput [matDatepicker]="pickerStart" formControlName="entryDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
                 <mat-datepicker #pickerStart></mat-datepicker>
@@ -24,7 +24,7 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Fecha de fin</mat-label>
-                <input matInput [matDatepicker]="pickerEnd" formControlName="dateEnd" (dateInput)="getCurrentDate($event.value)">
+                <input matInput [matDatepicker]="pickerEnd" formControlName="finalDate" (dateInput)="getCurrentDate($event.value)">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
                 <mat-datepicker #pickerEnd></mat-datepicker>

@@ -45,8 +45,8 @@ export class RecursiveReservationComponent implements OnInit {
           console.log(this.room);
           this.form = this.fb.group({
             description: ['', Validators.required],
-            dateStart : [''],
-            dateEnd : [''],
+            entryDate : [''],
+            finalDate : [''],
             weekday : [''],
             start: [''],
             end: [''],
