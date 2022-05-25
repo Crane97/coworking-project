@@ -4,6 +4,9 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteReservationComponent } from '../delete-reservation/delete-reservation.component';
+import { ReservationComponent } from '../reservation/reservation.component';
 
 @Component({
   selector: 'app-myreservations',
@@ -17,7 +20,7 @@ export class MyreservationsComponent implements OnInit {
   logUser : String;
   myReservations : Reservation[];
 
-  constructor(private reservationService : ReservationsService, private userService : UsersService, private restapi : RestapiService) { }
+  constructor(private dialogRef : MatDialog, private reservationService : ReservationsService, private userService : UsersService, private restapi : RestapiService) { }
 
   ngOnInit(): void {
     this.decodedJWT = this.restapi.userLogged();
@@ -33,6 +36,15 @@ export class MyreservationsComponent implements OnInit {
         });
       });
     }
+  }
+
+  openDialog(reservationPop : Reservation){
+    this.dialogRef.open(DeleteReservationComponent,{
+      data: {
+         reservation : reservationPop
+      }
+    }
+    );
   }
 
 }
