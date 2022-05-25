@@ -24,6 +24,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
     MatDatepickerModule,
     MatCardModule,
     MatNativeDateModule,
-    DayPilotModule
+    DayPilotModule,
+    MatDialogModule
   ],
   exports:[
     MatSliderModule,
@@ -71,7 +73,8 @@ import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
     MatDatepickerModule,
     MatCardModule,
     MatRippleModule,
-    DayPilotModule
+    DayPilotModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

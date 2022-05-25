@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { recursiveReservation } from 'src/app/interfaces/Reservations/recursiveReservation';
-import { Reservation } from 'src/app/interfaces/Reservations/reservation';
+import { RecursiveReservation } from 'src/app/interfaces/Reservations/recursiveReservation';
 import { Room } from 'src/app/interfaces/room';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ReservationsService } from 'src/app/services/reservations.service';
@@ -21,7 +20,7 @@ export class RecursiveReservationComponent implements OnInit {
   form : FormGroup;
   room : Room;
   dateToday : Date;
-  reservation : recursiveReservation;
+  reservation : RecursiveReservation;
 
   availableTime : number[];
   schedules : any;

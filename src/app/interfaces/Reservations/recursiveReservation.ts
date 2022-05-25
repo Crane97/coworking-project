@@ -1,7 +1,7 @@
 import { Room } from "../room";
 import { Usuario } from "../usuario";
 
-export interface recursiveReservation{
+export interface RecursiveReservation{
     description : string;
     entryDate : any;
     finalDate : any;

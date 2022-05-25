@@ -17,7 +17,7 @@ import { ReservationComponent } from './components/dashboard/reservations/reserv
 import { RecursiveReservationComponent } from './components/dashboard/reservations/recursive-reservation/recursive-reservation.component';
 import { DaysReservationComponent } from './components/dashboard/reservations/days-reservation/days-reservation.component';
 import { MyreservationsComponent } from './components/dashboard/reservations/myreservations/myreservations.component';
-
+import { DeleteReservationComponent } from './components/dashboard/reservations/delete-reservation/delete-reservation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,8 @@ import { MyreservationsComponent } from './components/dashboard/reservations/myr
     ReservationComponent,
     RecursiveReservationComponent,
     DaysReservationComponent,
-    MyreservationsComponent
+    MyreservationsComponent,
+    DeleteReservationComponent
   ],
   imports: [
     BrowserModule,
