@@ -1,4 +1,4 @@
 <h2>¿Estás seguro que deseas borrar la reserva {{reservation.description}} del día {{reservation.date}} de {{reservation.start}} a {{reservation.end}} en {{reservation.room.name}}?</h2>
 
-<button mat-raised-button color="primary">Borrar</button>
+<button mat-raised-button color="primary" (click)="deleteReservation(reservation.id)" [mat-dialog-close]>Borrar</button>
 <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>

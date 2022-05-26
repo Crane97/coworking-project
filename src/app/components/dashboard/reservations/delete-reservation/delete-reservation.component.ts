@@ -21,8 +21,11 @@ export class DeleteReservationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteReservation(){
-    this.reservationService
+  deleteReservation(reservationId : number){
+    console.log("He entrado en el metodo");
+    this.reservationService.deleteReservation(reservationId).subscribe(data =>{
+      
+    });
   }
 
 }

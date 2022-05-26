@@ -33,6 +33,6 @@ export class ReservationsService {
   }
 
   deleteReservation(reservationId : number){
-    return this.http.delete("http://localhost:9090/api/reservation/delete/" + reservationId, {responseType: "text" });
+    return this.http.delete("http://localhost:9090/api/reservation/delete/" + reservationId);
   }
 }
