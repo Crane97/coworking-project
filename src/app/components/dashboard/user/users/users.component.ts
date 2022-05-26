@@ -11,7 +11,6 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersComponent implements OnInit {
 
-  page : number = 0;
   usuarios : Usuario[];
   usuario : Usuario;
   
@@ -22,7 +21,7 @@ export class UsersComponent implements OnInit {
   }
 
   listAllUsers(){
-    this.userService.getAllUsers(this.page).subscribe(data => {
+    this.userService.getPublicableUsers().subscribe(data => {
       this.usuarios = data['content'];
     },
       (error) => {

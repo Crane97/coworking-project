@@ -10,7 +10,12 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(page: number): Observable<Usuario> {
+  getAllUsers(): Observable<Usuario> {
+    //console.log(params.get("page"))
+    return this.http.get<Usuario>("http://localhost:9090/api/user/users");
+  }
+
+  getPublicableUsers(): Observable<Usuario> {
     /*
     ESTE CÓDIGO SOLO SE UTILIZARÁ PARA LAS LLAMADAS EN LAS QUE SEA NECESARIO ESTAR LOGGEADO
     var reqHeader = new HttpHeaders({
@@ -18,9 +23,8 @@ export class UsersService {
       'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
     });
     */
-    var params = new HttpParams().set("page", page);
     //console.log(params.get("page"))
-    return this.http.get<Usuario>("http://localhost:9090/api/user/publicableUsers", { params: params });
+    return this.http.get<Usuario>("http://localhost:9090/api/user/publicableUsers");
   }
 
   createUser(user : Usuario) {

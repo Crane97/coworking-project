@@ -22,8 +22,11 @@
             <br>
             <button type="submit" class = "ancho button" mat-raised-button color="primary" [disabled]="form.invalid" >Login</button>
             <br>
-            <button type="submit" class = "anchoaux button" mat-raised-button color="primary" routerLink="/register">Create account</button>
-            <button type="submit" class = "anchoaux button" mat-raised-button color="primary" routerLink="/dashboard">Dashboard</button>
+            <br>
+            <button type="cancel" class = "ancho button" mat-raised-button color="primary" (click)="openDialog()">Create account</button>
+            <br>
+            <br>
+            <button type="cancel" class = "ancho button" mat-raised-button color="primary" routerLink="/dashboard">Dashboard</button>
         </form>
     </div>
 </div>

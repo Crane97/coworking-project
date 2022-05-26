@@ -25,6 +25,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatNativeDateModule,
     DayPilotModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatPaginatorModule
   ],
   exports:[
     MatSliderModule,
@@ -74,7 +78,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatRippleModule,
     DayPilotModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

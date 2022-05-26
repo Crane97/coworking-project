@@ -1,0 +1,82 @@
+<div class="container ">
+    <mat-tab-group >
+        <mat-tab label="Usuarios"> 
+            <div class="demo-button-container">
+                <button mat-raised-button class="demo-button">
+                  Add User
+                </button>
+            </div>  
+            <table mat-table [dataSource]="usersList" class="mat-elevation-z8">
+                
+                <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let user">{{user.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>name</th>
+                <td mat-cell *matCellDef="let user">{{user.name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="surname">
+                <th mat-header-cell *matHeaderCellDef>surname</th>
+                <td mat-cell *matCellDef="let user">{{user.surname}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>email</th>
+                <td mat-cell *matCellDef="let user">{{user.email}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef>phone</th>
+                <td mat-cell *matCellDef="let user">{{user.phone}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="partner">
+                <th mat-header-cell *matHeaderCellDef>partner</th>
+                <td mat-cell *matCellDef="let user">{{user.partner}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef>username</th>
+                <td mat-cell *matCellDef="let user">{{user.username}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="openToWork">
+                <th mat-header-cell *matHeaderCellDef>openToWork</th>
+                <td mat-cell *matCellDef="let user">{{user.openToWork}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="jobTitle">
+                <th mat-header-cell *matHeaderCellDef>jobTitle</th>
+                <td mat-cell *matCellDef="let user">{{user.jobTitle}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="publicable">
+                <th mat-header-cell *matHeaderCellDef>publicable</th>
+                <td mat-cell *matCellDef="let user">{{user.publicable}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>description</th>
+                <td mat-cell *matCellDef="let user">{{user.description}}</td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplayUser"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplayUser;"></tr>
+            </table>
+            <mat-paginator [length]="totalUsers"
+              [pageSize]="3"
+              aria-label="Select page"
+              (page)="OnPageChange($event)">
+            </mat-paginator>
+
+        </mat-tab>
+        <mat-tab label="Salas"> Content 2 </mat-tab>
+        <mat-tab label="Reservas"> Content 3 </mat-tab>
+        <mat-tab label="Empresas"> Content 4 </mat-tab>
+    </mat-tab-group>
+
+    <button mat-button color="primary">Back to Dashboard</button>
+</div>

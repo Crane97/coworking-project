@@ -53,8 +53,8 @@
                 </mat-select>
               </mat-form-field>
               <div class="example-button-row">
-                <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Create</button>
-                <button type="cancel" mat-raised-button color="warn" style="margin: 10px;" routerLink="/dashboard">Back</button>
+                <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid" [mat-dialog-close]>Create</button>
+                <button mat-raised-button color="warn" style="margin: 10px;" routerLink="/login" [mat-dialog-close]>Back</button>
               </div>
       </form>
 

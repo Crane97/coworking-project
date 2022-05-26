@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RestapiService } from 'src/app/services/restapi.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +13,11 @@ import { RestapiService } from 'src/app/services/restapi.service';
 })
 export class LoginComponent implements OnInit {
   form : FormGroup
-  username!: string;
-  password!: string;
+  username: string;
+  password: string;
   errormessage!: string;
 
-  constructor(private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : RestapiService) {
+  constructor(private dialogRef : MatDialog, private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : RestapiService) {
     this.form = this.fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
@@ -41,5 +43,9 @@ export class LoginComponent implements OnInit {
       });
     }
   );
+  }
+
+  openDialog(){
+    this.dialogRef.open(RegisterComponent);
   }
 }
