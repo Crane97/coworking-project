@@ -14,27 +14,32 @@ import { UsersService } from 'src/app/services/users.service';
 export class TabBarComponent implements OnInit {
 
   usersList : Usuario[];
-  columnsToDisplayUser = ['id','name','surname','email','phone','partner','username','openToWork','jobTitle','publicable','description'];
-
+  columnsToDisplayUser = ['id','name','surname','email','phone','partner','username','openToWork','jobTitle','publicable','description', 'Editar','Eliminar'];
   totalUsers;
 
   user : Usuario;
   page : number = 0;
 
   roomList : Room[];
-  
+  columnsToDisplayRoom = ['id','name', 'capacity', 'roomType', 'Editar', 'Eliminar'];
+  totalRooms;
+
   reservationList : Reservation[];
+  columnsToDisplayReservation = ['id', 'description', 'date', 'start', 'end', 'status', 'place', 'user', 'room', 'Editar', 'Eliminar'];
+  totalReservations;
 
   constructor(private reservationService : ReservationsService, private userService : UsersService, private roomService : RoomsService) {}
 
   ngOnInit(): void {
     this.listAllRooms();
     this.listAllUsers();
+    this.listAllReservations();
   }
 
   listAllRooms(){
     this.roomService.getAllRooms(this.page).subscribe(data => {
       this.roomList = data['content'];
+      this.totalRooms = this.roomList.length;
     },
     (error) => {
       console.log(error.error.message);
@@ -43,7 +48,7 @@ export class TabBarComponent implements OnInit {
   }
 
   listAllUsers(){
-    this.userService.getAllUsers().subscribe(data => {
+    this.userService.getAllUsers(this.page).subscribe(data => {
       this.usersList = data['content'];
       this.totalUsers = this.usersList.length;
     },
@@ -54,20 +59,27 @@ export class TabBarComponent implements OnInit {
   }
 
   listAllReservations(){
-
-  }
-
-  OnPageChange(event : any){
-    this.page = event.pageIndex;
-    console.log(this.page);
-    this.userService.getAllUsers().subscribe(data => {
-      this.usersList = data['content'];
-      this.totalUsers = this.usersList.length;
+    this.reservationService.getAllReservations().subscribe(data =>{
+      this.reservationList = data;
+      this.totalReservations = this.reservationList.length;
+      console.log(this.reservationList);
     },
     (error) => {
       console.log(error.error.message);
     }
     )
+  }
+
+  deleteUser(id : number){
+
+  }
+
+  deleteRoom(id : number){
+
+  }
+
+  deleteReservation(id : number){
+
   }
 
 }

@@ -13,16 +13,20 @@ export class UsersComponent implements OnInit {
 
   usuarios : Usuario[];
   usuario : Usuario;
+
+  page: number;
   
   constructor(private http : HttpClient, private userService : UsersService) { }
 
   ngOnInit(): void {
+    this.page = 0;
     this.listAllUsers();
   }
 
   listAllUsers(){
-    this.userService.getPublicableUsers().subscribe(data => {
+    this.userService.getPublicableUsers(this.page).subscribe(data => {
       this.usuarios = data['content'];
+      console.log(this.usuarios);
     },
       (error) => {
         console.log(error.error.message);
