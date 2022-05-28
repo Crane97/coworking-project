@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Reservation } from 'src/app/interfaces/Reservations/reservation';
 import { Room } from 'src/app/interfaces/room';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { RoomsService } from 'src/app/services/rooms.service';
 import { UsersService } from 'src/app/services/users.service';
+import { DeleteReservationComponent } from '../../dashboard/reservations/delete-reservation/delete-reservation.component';
+import { DeleteUserComponent } from '../../dashboard/user/delete-user/delete-user.component';
+import { RegisterComponent } from '../../register/register.component';
+import { DeleteRoomComponent } from '../delete-room/delete-room.component';
 
 @Component({
   selector: 'app-tab-bar',
@@ -28,7 +33,7 @@ export class TabBarComponent implements OnInit {
   columnsToDisplayReservation = ['id', 'description', 'date', 'start', 'end', 'status', 'place', 'user', 'room', 'Editar', 'Eliminar'];
   totalReservations;
 
-  constructor(private reservationService : ReservationsService, private userService : UsersService, private roomService : RoomsService) {}
+  constructor(private dialogRef : MatDialog, private reservationService : ReservationsService, private userService : UsersService, private roomService : RoomsService) {}
 
   ngOnInit(): void {
     this.listAllRooms();
@@ -70,16 +75,32 @@ export class TabBarComponent implements OnInit {
     )
   }
 
-  deleteUser(id : number){
-
+  deleteRoom(roomPop : Room){
+    this.dialogRef.open(DeleteRoomComponent,{
+      data:{
+        room: roomPop
+      }
+    })
   }
 
-  deleteRoom(id : number){
-
+  deleteReservation(reservationPop : Reservation){
+    this.dialogRef.open(DeleteReservationComponent,{
+      data: {
+        reservation : reservationPop
+      }
+    })
   }
 
-  deleteReservation(id : number){
+  addUser(){
+    this.dialogRef.open(RegisterComponent);
+  }
 
+  deleteUser(userPop : Usuario){
+    this.dialogRef.open(DeleteUserComponent,{
+      data:{
+        user: userPop
+      }
+    })
   }
 
 }

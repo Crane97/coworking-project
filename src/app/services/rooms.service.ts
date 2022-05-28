@@ -23,4 +23,8 @@ export class RoomsService {
     const url = "http://localhost:9090/api/room/" + id;
     return this.http.get<Room>(url);
   }
+
+  deleteRoom(id : number){
+    return this.http.delete("http://localhost:9090/api/room/delete/" + id);
+  }
 }

@@ -1,0 +1,4 @@
+<h2>¿Estás seguro que deseas borrar el usuario {{user.name}} {{user.surname}} ? Se eliminarán todos sus datos.</h2>
+
+<button mat-raised-button color="primary" (click)="deleteUser(user.id)" [mat-dialog-close] style="margin: 10px;">Borrar</button>
+<button mat-raised-button color="warn" [mat-dialog-close] style="margin: 10px;">Cancelar</button>

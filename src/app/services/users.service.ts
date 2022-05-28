@@ -40,6 +40,10 @@ export class UsersService {
     return this.http.post("http://localhost:9090/api/user/add", user, { responseType: "text" });
   }
 
+  deleteUser(id : number){
+    return this.http.delete("http://localhost:9090/api/user/delete/" + id);
+  }
+
   getUser(id : number){
     var reqHeader = new HttpHeaders({
       //'Content-Type': 'application/json',

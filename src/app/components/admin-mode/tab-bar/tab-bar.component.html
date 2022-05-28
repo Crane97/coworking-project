@@ -3,7 +3,7 @@
         <mat-tab label="Usuarios"> 
             <br>
             <div class="demo-button-container">
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" (click)="addUser()">
                   Add User
                 </button>
             </div>  
@@ -67,15 +67,15 @@
 
                 <ng-container matColumnDef="Editar">
                     <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Editar</th>
-                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">
                         <button mat-button color="accent">Editar</button>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Eliminar">
                     <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Eliminar</th>
-                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">
-                        <button mat-button color="warn">Eliminar</button>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">
+                        <button mat-button color="warn" (click)="deleteUser(user)">Eliminar</button>
                     </td>
                 </ng-container>
             
@@ -128,7 +128,7 @@
                 <ng-container matColumnDef="Eliminar">
                     <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Eliminar</th>
                     <td style="padding-left: 20px;" mat-cell *matCellDef="let room">
-                        <button mat-button color="warn">Eliminar</button>
+                        <button mat-button color="warn" (click)="deleteRoom(room)">Eliminar</button>
                     </td>
                 </ng-container>
             
@@ -207,7 +207,7 @@
                 <ng-container matColumnDef="Eliminar">
                     <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Eliminar</th>
                     <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">
-                        <button mat-button color="warn">Eliminar</button>
+                        <button mat-button color="warn" (click)="deleteReservation(reservation)">Eliminar</button>
                     </td>
                 </ng-container>
             

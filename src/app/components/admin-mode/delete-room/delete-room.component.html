@@ -1,0 +1,4 @@
+<h2>¿Estás seguro que deseas borrar la sala {{room.name}} de tipo {{room.roomType}}?</h2>
+
+<button mat-raised-button color="primary" (click)="deleteRoom(room.id)" [mat-dialog-close] style="margin: 10px;">Borrar</button>
+<button mat-raised-button color="warn" [mat-dialog-close] style="margin: 10px;">Cancelar</button>
