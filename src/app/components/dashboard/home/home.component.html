@@ -9,9 +9,40 @@
             [rowspan]="1">
             <mat-card>Simple card</mat-card>
         </mat-grid-tile>
+        <!-- SI NO ESTÁ CON LA SESIÓN INICIADA, QUE LE SALGA PARA CREARSE UNA CUENTA-->
         <mat-grid-tile
             [colspan]="2"
-            [rowspan]="2">
+            [rowspan]="2"
+            *ngIf="!isLogged">
+            <mat-card class="example-card" style="background-color: #FFDA91;">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title><h1>¡¡CREAR CUENTA!!</h1></mat-card-title>
+                  <mat-card-subtitle>Crear cuenta es gratuito.</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Si te creas una cuenta, tendrás acceso a:
+                    <br>
+                    1 - Acceso a los horarios de las salas, y a poder reservar estas de forma online, sin necesidad de que nadie gestione tus reservas.
+                    <br>
+                    2 - Puedes hacer reservas diarias, reservas semanales e incluso reservas para varios días consecutivos. Puedes reservar hasta para dentro de 15 minutos... ¡siempre y cuando haya hueco libre!
+                    <br>
+                    3 - Puedes poner tu cuenta en modo público, de tal manera aparecerá en el apartado de "Nuestros coworkers" ¡y será accesible para todo aquél que entre en la página web!
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="warn" (click)="openRegister()">CREAR CUENTA</button>
+                </mat-card-actions>
+              </mat-card>
+        </mat-grid-tile>
+
+
+        <!-- SI ESTÁ CON LA SESIÓN INICIADA Y NO ES SOCIO, QUE LE SALGA PARA HACERSE SOCIO -->
+        <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="2"
+            *ngIf="isLogged">
             <mat-card class="example-card" style="background-color: #FFDA91;">
                 <mat-card-header>
                   <div mat-card-avatar class="example-header-image"></div>
