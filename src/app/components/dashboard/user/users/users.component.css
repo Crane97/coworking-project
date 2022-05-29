@@ -11,7 +11,7 @@ th {
 }
 
 .backgrounded{
-    background-image: url("../../../../assets/img/COWORKING.jpg");
+    background-image: url("../../../../../assets/img/COWORKING.jpg");
     background-color: #cccccc;
     /* Full height */
   height: 100%;

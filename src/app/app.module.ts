@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './components/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxStripeModule } from 'ngx-stripe';
+
 
 //Componentes
 import { LoginComponent } from './components/login/login.component';
@@ -42,7 +44,9 @@ import { DeleteRoomComponent } from './components/admin-mode/delete-room/delete-
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxStripeModule.forRoot('pk_test_51L4jA9EbpLL7D6KIluDen1sIoPDoIzZXhnXqtorh47Lzf92C0Xfy9HUQHgmvPYzJThhzAzRElKz8wGcOSBKmRA4200Ah8aZNaj'),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
