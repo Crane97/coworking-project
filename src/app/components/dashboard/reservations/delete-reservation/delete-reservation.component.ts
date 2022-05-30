@@ -12,7 +12,8 @@ export class DeleteReservationComponent implements OnInit {
 
   reservation : Reservation;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private reservationService: ReservationsService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data, 
+  private reservationService: ReservationsService) {
     this.reservation = data.reservation;
   }
 

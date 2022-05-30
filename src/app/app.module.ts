@@ -22,6 +22,7 @@ import { MyreservationsComponent } from './components/dashboard/reservations/myr
 import { DeleteReservationComponent } from './components/dashboard/reservations/delete-reservation/delete-reservation.component';
 import { DeleteUserComponent } from './components/dashboard/user/delete-user/delete-user.component';
 import { DeleteRoomComponent } from './components/admin-mode/delete-room/delete-room.component';
+import { ReservationPaymentComponent } from './components/dashboard/reservations/reservation-payment/reservation-payment.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DeleteRoomComponent } from './components/admin-mode/delete-room/delete-
     MyreservationsComponent,
     DeleteReservationComponent,
     DeleteUserComponent,
-    DeleteRoomComponent
+    DeleteRoomComponent,
+    ReservationPaymentComponent
   ],
   imports: [
     BrowserModule,
