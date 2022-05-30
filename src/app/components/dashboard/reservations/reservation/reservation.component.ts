@@ -13,6 +13,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { ReservationPaymentComponent } from '../reservation-payment/reservation-payment.component';
 import { ReservationPayment } from '../../../../interfaces/Reservations/reservationPayment';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { Invoice } from 'src/app/interfaces/invoice'
 
 @Component({
   selector: 'app-reservation',
@@ -26,10 +27,14 @@ export class ReservationComponent implements OnInit {
   dateToday: Date;
   reservation: Reservation;
 
+  reservationResponse: Reservation;
+
   availableTime: number[];
   schedules: any;
   currentDate: any;
   currentUser: Usuario;
+
+  invoice: Invoice;
 
   reservationPayment: ReservationPayment;
 
@@ -55,7 +60,6 @@ export class ReservationComponent implements OnInit {
       if (id != null) {
         this.roomService.getRoom(id).subscribe(data => {
           this.room = data;
-          console.log(this.room);
           this.form = this.fb.group({
             description: ['', Validators.required],
             date: [''],
@@ -70,13 +74,10 @@ export class ReservationComponent implements OnInit {
         console.log(this.decodedJWT);
         if (this.decodedJWT) {
           this.logUser = this.decodedJWT.sub;
-          console.log("el logUser " + this.logUser);
           this.userService.getUserByUsername(this.logUser).subscribe(data => {
             this.currentUser = data;
-            console.log("Soy el usuario " + this.currentUser);
             console.log(this.currentUser);
             this.form.controls['user'].setValue(this.currentUser);
-            console.log(this.form);
           });
         }
       }
@@ -102,9 +103,8 @@ export class ReservationComponent implements OnInit {
 
   newReservation() {
     this.reservation = this.form.value;
-    console.log(this.reservation);
-    console.log(this.currentUser);
     this.reservationService.addNewReservation(this.reservation).subscribe(data => {
+      this.reservationResponse = JSON.parse(data);
       this._snackBar.open('Se ha creado la reserva correctamente', '', {
         duration: 5000,
         horizontalPosition: 'center',
@@ -113,27 +113,30 @@ export class ReservationComponent implements OnInit {
       });
     }
     );
-    this.reservationPaymentAssignement(this.reservation);
+    console.log(this.reservationResponse);
+    this.reservationPaymentAssignement(this.reservationResponse);
   }
 
-  reservationPaymentAssignement(res : Reservation) {
-    console.log("Llamo al reservationPaymentAssignement");
-    console.log(res);
-    this.invoiceService.getInvoiceByReservationId(this.reservation.id).subscribe(data => {
+  reservationPaymentAssignement(res: Reservation) {
+    this.invoiceService.getInvoiceByReservationId(res.id).subscribe(data => {
       console.log("entro en el invoice service");
-      console.log(this.reservation.id);
-      this.reservationPayment.description = this.reservation.description;
-      this.reservationPayment.place = this.reservation.place;
-      this.reservationPayment.user = this.reservation.user;
-      this.reservationPayment.room = this.reservation.room;
-      this.reservationPayment.id = data['content'].id;
-      this.reservationPayment.amount = data['content'].totalAmount;
-    })
-
-    this.openReservationPayment();
+      this.invoice = data;
+      this.openReservationPayment(this.invoice);
+    });
   }
 
-  openReservationPayment() {
+  openReservationPayment(invoice: Invoice) {
+
+    console.log("entro en el openReservationPayment");
+    console.log(invoice);
+    console.log(this.reservation);
+    this.reservationPayment.id = invoice.id;
+    this.reservationPayment.description = this.reservation.description;
+    this.reservationPayment.amount = invoice.totalAmount;
+    this.reservationPayment.place = this.reservation.place;
+    this.reservationPayment.user = this.reservation.user;
+    this.reservationPayment.room = this.reservation.room;
+
     this.dialogRef.open(ReservationPaymentComponent, {
       data: {
         reservationPayment: this.reservationPayment
