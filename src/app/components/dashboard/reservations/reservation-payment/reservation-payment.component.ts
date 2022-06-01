@@ -8,6 +8,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaymentIntentDto } from 'src/app/interfaces/payment-intent-dto';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-reservation-payment',
@@ -32,7 +33,8 @@ export class ReservationPaymentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     private stripeService: StripeService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private invoiceService: InvoiceService
   ) {
     this.reservationPayment = data.reservationPayment;
   }
@@ -144,10 +146,9 @@ export class ReservationPaymentComponent implements OnInit {
 
   payInPlace() {
     //TODO: Crear servicio para modificar factura y marcar que se pagará en puerta
-  }
+    this.invoiceService.updatePayAtDoor(this.reservationPayment.id).subscribe(data =>{
 
-  paid() {
-    //TODO: Crear servicio para indicar que la factura ya está pagada
+    });
   }
 
   deleteReservations() {
@@ -157,5 +158,6 @@ export class ReservationPaymentComponent implements OnInit {
       verticalPosition: 'bottom'
     });
     //TODO: Crear servicio para eliminar las reservas creadas (con el id del invoice)
+    
   }
 }

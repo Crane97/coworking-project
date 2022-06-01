@@ -104,14 +104,26 @@ export class ReservationComponent implements OnInit {
   newReservation() {
     this.reservation = this.form.value;
     this.reservationService.addNewReservation(this.reservation).subscribe(data => {
-      this.reservationResponse = JSON.parse(data);
-      this._snackBar.open('Se ha creado la reserva correctamente', '', {
+      if (data) {
+        this.reservationResponse = JSON.parse(data);
+        this._snackBar.open('Se ha creado la reserva correctamente', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+          //this.router.navigateByUrl("login"); que te enlace a mis reservas
+        });
+        this.reservationPaymentAssignement(this.reservationResponse);
+      }
+    },
+    error => {
+      console.log(error);
+      console.log(error.status);
+      this._snackBar.open('Ha habido un error a la hora de crear la reserva, revisa los horarios que has seleccionado y si hay horarios reservados en medio.', '', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
         //this.router.navigateByUrl("login"); que te enlace a mis reservas
       });
-    this.reservationPaymentAssignement(this.reservationResponse);
     }
     );
   }

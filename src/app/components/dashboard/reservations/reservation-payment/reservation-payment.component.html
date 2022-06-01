@@ -11,16 +11,18 @@
             <input type="text" formControlName="name" placeholder="tu nombre">
             <br>
             <div id="card-element" class="field"></div>
+            <br>
+            <br>
             <div *ngIf="error">
                 {{error}}
             </div>
-                <button mat-button color="primary" (click)="paid()" type="submit">
+                <button mat-button color="primary" type="submit">
                     Pagar online
                 </button>
                 <button mat-button color="primary" (click)="payInPlace()" [mat-dialog-close]>
                     Pagar en puerta
                 </button>
-                <button mat-button color="primary" (click)="deleteReservations" [mat-dialog-close]>
+                <button mat-button color="primary" (click)="deleteReservations()" [mat-dialog-close]>
                     Cancelar operación
                 </button>
         </form>

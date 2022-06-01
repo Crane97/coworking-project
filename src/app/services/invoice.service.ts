@@ -13,4 +13,8 @@ export class InvoiceService {
   getReservationPaymentByReservationId(reservationId : number){
     return this.http.get<ReservationPayment>("http://localhost:9090/api/invoice/ReservationInvoice/" + reservationId);
   }
+
+  updatePayAtDoor(id: number){
+    return this.http.put("http://localhost:9090/api/invoice/update/"+id,{});
+  }
 }
