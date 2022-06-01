@@ -111,31 +111,22 @@ export class ReservationComponent implements OnInit {
         verticalPosition: 'bottom'
         //this.router.navigateByUrl("login"); que te enlace a mis reservas
       });
+    this.reservationPaymentAssignement(this.reservationResponse);
     }
     );
-    console.log(this.reservationResponse);
-    this.reservationPaymentAssignement(this.reservationResponse);
   }
 
   reservationPaymentAssignement(res: Reservation) {
-    this.invoiceService.getInvoiceByReservationId(res.id).subscribe(data => {
+    this.invoiceService.getReservationPaymentByReservationId(res.id).subscribe(data => {
       console.log("entro en el invoice service");
-      this.invoice = data;
-      this.openReservationPayment(this.invoice);
+      this.reservationPayment = data;
+      this.openReservationPayment();
     });
   }
 
-  openReservationPayment(invoice: Invoice) {
+  openReservationPayment() {
 
     console.log("entro en el openReservationPayment");
-    console.log(invoice);
-    console.log(this.reservation);
-    this.reservationPayment.id = invoice.id;
-    this.reservationPayment.description = this.reservation.description;
-    this.reservationPayment.amount = invoice.totalAmount;
-    this.reservationPayment.place = this.reservation.place;
-    this.reservationPayment.user = this.reservation.user;
-    this.reservationPayment.room = this.reservation.room;
 
     this.dialogRef.open(ReservationPaymentComponent, {
       data: {

@@ -1,15 +1,28 @@
 <mat-card class="example-card">
-    <mat-card-title>Deseas confirmar el pago para {{reservationPayment.id}}</mat-card-title>
-    <mat-card-subtitle>Datos del pago:
-        <p>Descripción: {{reservationPayment.description}}</p>
-        <p>Tiempo total (en horas): {{reservationPayment.totalTime}}</p>
-        <p>Sitio: {{reservationPayment.place}}</p>
-        <p>Precio: {{reservationPayment.amount}}</p>
-        <p>Realizada por {{reservationPayment.user.username}} en {{reservationPayment.room.name}}</p>
-    </mat-card-subtitle>
-    <mat-card-actions>
-        <button mat-button>Pagar Reserva</button>
-        <button mat-button>Pagar en la entrada</button>
-        <button mat-button>Cancelar reserva</button>
-    </mat-card-actions>
+    <mat-card-title>Realizar el pago con tarjeta:</mat-card-title>
+    <mat-card-content>
+        <p>Precio total: {{reservationPayment.totalAmount}} €</p>
+        <p>Descuento: {{reservationPayment.discount}} %</p>
+        <p>Precio a pagar: {{reservationPayment.finalAmount}} €</p>
+        <p>Total de horas: {{reservationPayment.totalTime}}</p>
+    </mat-card-content>
+    <div>
+        <form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm">
+            <input type="text" formControlName="name" placeholder="tu nombre">
+            <br>
+            <div id="card-element" class="field"></div>
+            <div *ngIf="error">
+                {{error}}
+            </div>
+                <button mat-button color="primary" (click)="paid()" type="submit">
+                    Pagar online
+                </button>
+                <button mat-button color="primary" (click)="payInPlace()" [mat-dialog-close]>
+                    Pagar en puerta
+                </button>
+                <button mat-button color="primary" (click)="deleteReservations" [mat-dialog-close]>
+                    Cancelar operación
+                </button>
+        </form>
+    </div>
 </mat-card>

@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { RecursiveReservation } from 'src/app/interfaces/Reservations/recursiveReservation';
+import { Reservation } from 'src/app/interfaces/Reservations/reservation';
+import { ReservationPayment } from 'src/app/interfaces/Reservations/reservationPayment';
 import { Room } from 'src/app/interfaces/room';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { InvoiceService } from 'src/app/services/invoice.service';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { RoomsService } from 'src/app/services/rooms.service';
 import { UsersService } from 'src/app/services/users.service';
+import { ReservationPaymentComponent } from '../reservation-payment/reservation-payment.component';
 
 @Component({
   selector: 'app-recursive-reservation',
@@ -27,11 +32,22 @@ export class RecursiveReservationComponent implements OnInit {
   currentDate : any;
   currentUser : Usuario;
 
+  reservationPayment : ReservationPayment;
+  reservationResponse : Reservation[];
+
   decodedJWT : any;
   logUser : String;
 
 
-  constructor(private _snackBar: MatSnackBar, private fb : FormBuilder, private route : ActivatedRoute, private roomService : RoomsService, private reservationService : ReservationsService, private restapi : RestapiService, private userService: UsersService) {
+  constructor(private _snackBar: MatSnackBar, 
+    private fb : FormBuilder, 
+    private route : ActivatedRoute, 
+    private roomService : RoomsService, 
+    private reservationService : ReservationsService, 
+    private restapi : RestapiService, 
+    private userService: UsersService,
+    private dialogRef : MatDialog,
+    private invoiceService : InvoiceService) {
     
   }
 
@@ -90,9 +106,8 @@ export class RecursiveReservationComponent implements OnInit {
 
   newReservation(){
     this.reservation = this.form.value;
-    console.log("llamada newReservation()");
-    console.log(this.currentUser);
     this.reservationService.addRecursiveReservation(this.reservation).subscribe(data=>{
+      this.reservationResponse = JSON.parse(data);
       this._snackBar.open('Se ha creado la reserva correctamente', '', {
         duration: 5000,
         horizontalPosition: 'center',
@@ -100,8 +115,29 @@ export class RecursiveReservationComponent implements OnInit {
 
         //this.router.navigateByUrl("login"); que te enlace a mis reservas
     });
+    console.log(this.reservationResponse[0]);
+    this.reservationPaymentAssignement(this.reservationResponse[0]);
   }
   );
+  }
+
+  reservationPaymentAssignement(res: Reservation) {
+    this.invoiceService.getReservationPaymentByReservationId(res.id).subscribe(data => {
+      console.log("entro en el invoice service");
+      this.reservationPayment = data;
+      this.openReservationPayment();
+    });
+  }
+
+  openReservationPayment() {
+
+    console.log("entro en el openReservationPayment");
+
+    this.dialogRef.open(ReservationPaymentComponent, {
+      data: {
+        reservationPayment: this.reservationPayment
+      }
+    });
   }
 
 }

@@ -22,7 +22,11 @@ export class DeleteRoomComponent implements OnInit {
 
   deleteRoom(roomid : number){
     this.roomService.deleteRoom(roomid).subscribe(data =>{
-      this._snackBar.open('Se ha eliminado la sala ' + roomid + ' correctamente. Recarga la página para comprobarlo');
+      this._snackBar.open('Se ha eliminado la sala ' + roomid + ' correctamente. Recarga la página para comprobarlo', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
     });
   }
 }

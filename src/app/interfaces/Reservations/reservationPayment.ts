@@ -6,9 +6,10 @@ export interface ReservationPayment{
     description : String;
     totalTime: number;
     place : String;
+    status : String;
     totalAmount : number;
     discount : number;
-    amount : number;
+    finalAmount : number;
     user : Usuario;
     room : Room;
 }
