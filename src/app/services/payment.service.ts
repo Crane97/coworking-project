@@ -31,4 +31,8 @@ export class PaymentService {
     return this.httpClient.patch(this.stripeURL+ "orders/confirm/"+id, {});
   }
 
+  createSubscription(priceId : string): Observable<any>{
+    return this.httpClient.post(this.stripeURL+"checkout/session/" + priceId, {}, cabecera);
+  }
+
 }

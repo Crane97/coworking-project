@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { PaymentService } from 'src/app/services/payment.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterComponent } from '../../register/register.component';
@@ -17,7 +19,13 @@ export class HomeComponent implements OnInit {
   isLogged : Boolean = false;
   currentUser : Usuario;
 
-  constructor(private dialogRef: MatDialog, private userService : UsersService, private restapi : RestapiService) { }
+  priceId : string = "price_1L4jmzEbpLL7D6KIOT0Mooza";
+
+  constructor(private dialogRef: MatDialog, 
+    private userService : UsersService, 
+    private restapi : RestapiService,
+    private paymentService : PaymentService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.decodedJWT = this.restapi.userLogged();
@@ -33,6 +41,15 @@ export class HomeComponent implements OnInit {
 
   openRegister(){
     this.dialogRef.open(RegisterComponent);
+  }
+
+  newPartnership(){
+    this.paymentService.createSubscription(this.priceId).subscribe(data =>{
+      console.log(data);
+      //const aux = JSON.parse(data);
+      console.log(data['url']);
+      window.location.href=data['url'];
+    })
   }
 
 }
