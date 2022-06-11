@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   newPartnership(){
-    this.paymentService.createSubscription(this.priceId).subscribe(data =>{
+    this.paymentService.createSubscription(this.priceId, this.currentUser.id).subscribe(data =>{
       console.log(data);
       //const aux = JSON.parse(data);
       console.log(data['url']);
