@@ -24,14 +24,6 @@ export class UsersService {
   }
 
   getPublicableUsers(page: number): Observable<Usuario> {
-    /*
-    ESTE CÓDIGO SOLO SE UTILIZARÁ PARA LAS LLAMADAS EN LAS QUE SEA NECESARIO ESTAR LOGGEADO
-    var reqHeader = new HttpHeaders({
-      //'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('JWTtoken')
-    });
-    */
-    //console.log(params.get("page"))
     var params = new HttpParams().set("page", page);
     return this.http.get<Usuario>("http://localhost:9090/api/user/publicableUsers", { params: params });
   }
