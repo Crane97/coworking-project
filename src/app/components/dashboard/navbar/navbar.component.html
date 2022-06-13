@@ -3,10 +3,10 @@
     <span class="example-spacer"></span>
     <button mat-button *ngFor="let item of menus" [routerLink]="item.redirect">{{item.nombre}}</button>
     <span class="example-spacer"></span>
-    <button mat-button>Hola, {{logUser}}</button>
-    <button mat-icon-button *ngIf="!isLogged" routerLink="/login" class="example-icon account_circle" aria-label="Example account_circle login">
+    <button mat-button *ngIf="isLogged">Hola, {{logUser}}</button>
+    <button mat-icon-button *ngIf="!isLogged" routerLink="/login" class="example-icon account_circle" aria-label="Example account_circle login" style="padding-right: 100px;">
         Login
-        <mat-icon style="padding-right: 5px;">login</mat-icon>
+        <mat-icon>login</mat-icon>
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isLogged"><mat-icon>account_circle</mat-icon></button>
         <mat-menu #menu="matMenu" >
