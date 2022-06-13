@@ -2,4 +2,48 @@
     <mat-toolbar>
         <span>¡Contacta con nosotros!</span>
     </mat-toolbar>
+
+    <div class="card" style="width: 90%; margin: auto;">
+
+        <mat-grid-list cols="2" rowHeight="400px">
+            <mat-grid-tile
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-card class="mycard" style="margin: 10px;">
+                    <mat-card-header>
+                        <img mat-card-avatar src = "../../../../assets/img/person-male.png">
+                        <mat-card-title>Jorge Ruiz de la Torre Bertolín</mat-card-title>
+                        <mat-card-subtitle>Cofounder y CTO del proyecto</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>Jorge es el informático que ha llevado a cabo la página web y también se ha involucrado en la creación del proyecto.</p>
+                        <p>Para cualquier duda o bug sobre la web, te puedes poner en contacto con él a través de su email: jorge@macdiego.com o a través de su teléfono: +34 682 658 759.</p>
+                        <p>¡Muchas gracias por tu colaboración!</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button mat-button color="primary">Contactar</button>
+                    </mat-card-footer>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-card class="mycard" style="margin: 10px;">
+                    <mat-card-header>
+                        <img mat-card-avatar src = "../../../../assets/img/person-male.png">
+                        <mat-card-title>Alberto Monforte Gómez</mat-card-title>
+                        <mat-card-subtitle>Fundador y CEO del proyecto</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>Alberto estudió ingeniería informática, es quien tuvo la iniciativa de comenzar con este proyecto y quien ha realizado todas las tareas administrativas.</p>
+                        <p>Para cualquier tipo de consulta, te puedes poner en contacto con él a través de su email: alberto@macdiego.com o a través de su teléfono: +34 600 411 006.</p>
+                        <p>¡Muchas gracias por tu colaboración!</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button mat-button color="primary">Contactar</button>
+                    </mat-card-footer>
+                </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
 </div>
