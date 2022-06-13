@@ -4,11 +4,58 @@
     </mat-toolbar>
 
     <mat-grid-list cols="4" rowHeight="1:0.5">
-        <mat-grid-tile
-            [colspan]="2"
-            [rowspan]="1">
-            <mat-card>Simple card</mat-card>
-        </mat-grid-tile>
+      <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="2"
+      *ngIf="!isLogged">
+      <mat-card class="example-card" style="background-color: #FFDA91;">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title><h1>RESERVA NUESTRAS SALAS YA</h1></mat-card-title>
+            <mat-card-subtitle>Hazlo todo online</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Nuestra funcionalidad de reservar sala es completamente online.
+              <br>
+              No hace falta que te pongas en contacto con nosotros, puedes reservar directamente.
+              <br>
+              En el apartado de nuestras salas, podrás echar un vistazo a nuestras salas. Si lo deseas, puedes pedir una visita presencial antes de reservar una sala.
+              <br>
+              Puedes crearte una cuenta para pedir una cita presencial.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/dashboard/salas">ECHAR UN VISTAZO A LAS SALAS</button>
+          </mat-card-actions>
+        </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="2"
+      *ngIf="isLogged">
+      <mat-card class="example-card" style="background-color: #FFDA91;">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title><h1>RESERVA TU SALA</h1></mat-card-title>
+            <mat-card-subtitle>Hazlo todo online</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Nuestra funcionalidad de reservar sala es completamente online.
+              <br>
+              No hace falta que te pongas en contacto con nosotros, puedes reservar directamente.
+              <br>
+              En el apartado de nuestras salas, podrás echar un vistazo a nuestras salas. Si lo deseas, puedes pedir una visita presencial antes de reservar una sala.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button color="primary" routerLink="/dashboard/salas">RESERVA TU SALA YA</button>
+              <button mat-raised-button color="primary" (click)="newAppointment()">PEDIR CITA PRESENCIAL</button>
+          </mat-card-actions>
+        </mat-card>
+  </mat-grid-tile>
         <!-- SI NO ESTÁ CON LA SESIÓN INICIADA, QUE LE SALGA PARA CREARSE UNA CUENTA-->
         <mat-grid-tile
             [colspan]="2"

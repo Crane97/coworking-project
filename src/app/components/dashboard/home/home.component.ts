@@ -6,6 +6,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterComponent } from '../../register/register.component';
+import { FaceToFaceComponent } from '../reservations/face-to-face/face-to-face.component';
 
 @Component({
   selector: 'app-home',
@@ -50,6 +51,10 @@ export class HomeComponent implements OnInit {
       console.log(data['url']);
       window.location.href=data['url'];
     })
+  }
+
+  newAppointment(){
+    this.dialogRef.open(FaceToFaceComponent);
   }
 
 }

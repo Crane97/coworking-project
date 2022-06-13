@@ -39,4 +39,8 @@ export class ReservationsService {
   deleteReservation(reservationId : number){
     return this.http.delete("http://localhost:9090/api/reservation/delete/" + reservationId);
   }
+
+  addAppointment(faceToFace : any){
+    return this.http.post("http://localhost:9090/api/reservation/add/face-to-face", faceToFace);
+  }
 }

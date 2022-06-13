@@ -1,0 +1,31 @@
+<div class="container">
+
+    <!-- NORMAL RESERVATION (FOR A DAY, FOR A TIME) -->
+    <mat-card class="mycard">
+        <mat-card-header>
+            <mat-card-title>Solicitar visita</mat-card-title>
+            <mat-card-subtitle>Hay dos turnos de visita: A las 10 de la mañana y a las 19:00 de la tarde, ¡ven cuando
+                quieras!
+            </mat-card-subtitle>
+        </mat-card-header>
+        <div>Selecciona la fecha en la que vas a querer reservar</div>
+        <br>
+        <form [formGroup]="form" class="example-form" (ngSubmit)="newAppointment()">
+            <mat-form-field appearance="fill">
+                <mat-label>Seleccionar fecha</mat-label>
+                <input matInput [matDatepicker]="pickerNormal" formControlName="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="pickerNormal"></mat-datepicker-toggle>
+                <mat-datepicker #pickerNormal></mat-datepicker>
+            </mat-form-field>
+            <br>
+            <div class="example-button-row">
+                <button type="submit" mat-raised-button color="primary" style="margin: 10px;"
+                    [disabled]="!form.valid">Reservar</button>
+                <button type="cancel" mat-raised-button color="warn" style="margin: 10px;"
+                    routerLink="/dashboard">Cancel</button>
+            </div>
+        </form>
+    </mat-card>
+
+</div>
