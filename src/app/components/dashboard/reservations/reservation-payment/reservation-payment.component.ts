@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaymentIntentDto } from 'src/app/interfaces/payment-intent-dto';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { ReservationsService } from 'src/app/services/reservations.service';
 
 @Component({
   selector: 'app-reservation-payment',
@@ -34,7 +35,8 @@ export class ReservationPaymentComponent implements OnInit {
     private stripeService: StripeService,
     private router: Router,
     private snackbar: MatSnackBar,
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private reservationService : ReservationsService
   ) {
     this.reservationPayment = data.reservationPayment;
   }
@@ -158,6 +160,8 @@ export class ReservationPaymentComponent implements OnInit {
       verticalPosition: 'bottom'
     });
     //TODO: Crear servicio para eliminar las reservas creadas (con el id del invoice)
-    
+    this.reservationService.deleteReservationsByInvoiceId(this.reservationPayment.id).subscribe(data => {
+      
+    });
   }
 }

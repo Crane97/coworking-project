@@ -33,16 +33,14 @@
         <br>
           
         <div *ngIf="dateToday">
-            <mat-form-field class="ancho" appearance="fill">
-                <mat-label>Día de la semana</mat-label>
-                <mat-select formControlName="weekday" required>
-                    <mat-option value="Lunes">Lunes</mat-option>
-                    <mat-option value="Martes">Martes</mat-option>
-                    <mat-option value="Miercoles">Miercoles</mat-option>
-                    <mat-option value="Jueves">Jueves</mat-option>
-                    <mat-option value="Viernes">Viernes</mat-option>
-                </mat-select>
-            </mat-form-field>
+            <section class="example-section">
+              <h4>Selecciona los días que quieres que se repita esta reserva</h4>
+              <p><mat-checkbox formControlName="monday">Lunes</mat-checkbox></p>
+              <p><mat-checkbox formControlName="tuesday">Martes</mat-checkbox></p>
+              <p><mat-checkbox formControlName="wednesday">Miercoles</mat-checkbox></p>
+              <p><mat-checkbox formControlName="thursday">Jueves</mat-checkbox></p>
+              <p><mat-checkbox formControlName="friday">Viernes</mat-checkbox></p>
+            </section>
             <br>
             <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Descripción</mat-label>

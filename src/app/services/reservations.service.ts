@@ -43,4 +43,8 @@ export class ReservationsService {
   addAppointment(faceToFace : any){
     return this.http.post("http://localhost:9090/api/reservation/add/face-to-face", faceToFace);
   }
+
+  deleteReservationsByInvoiceId(invoiceId : number){
+    return this.http.delete("http://localhost:9090/api/reservation/deleteByInvoiceId/" + invoiceId);
+  }
 }

@@ -62,7 +62,11 @@ export class RecursiveReservationComponent implements OnInit {
             description: ['', Validators.required],
             entryDate : [''],
             finalDate : [''],
-            weekday : [''],
+            monday : [false],
+            tuesday : [false],
+            wednesday : [false],
+            thursday : [false],
+            friday : [false],
             start: [''],
             end: [''],
             place: [''],
@@ -106,6 +110,7 @@ export class RecursiveReservationComponent implements OnInit {
 
   newReservation(){
     this.reservation = this.form.value;
+    console.log(this.form.value);
     this.reservationService.addRecursiveReservation(this.reservation).subscribe(data=>{
       this.reservationResponse = JSON.parse(data);
       this._snackBar.open('Se ha creado la reserva correctamente', '', {
