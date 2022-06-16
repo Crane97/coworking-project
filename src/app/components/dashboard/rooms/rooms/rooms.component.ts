@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Room } from 'src/app/interfaces/room';
-import { RestapiService } from 'src/app/services/restapi.service';
 import { RoomsService } from 'src/app/services/rooms.service';
 
 @Component({
@@ -15,7 +14,8 @@ export class RoomsComponent implements OnInit {
   rooms : Room[];
   room : Room;
 
-  constructor(private http : HttpClient, private roomService : RoomsService) { }
+  constructor(private http : HttpClient, 
+    private roomService : RoomsService) { }
 
   ngOnInit(): void {
     this.listAllRooms();

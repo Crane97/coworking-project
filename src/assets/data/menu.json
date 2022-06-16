@@ -12,6 +12,10 @@
         "redirect": "/dashboard/salas"
     },
     {
+        "nombre": "Nuestras empresas",
+        "redirect": "/dashboard/empresas"
+    },
+    {
         "nombre": "Contacto",
         "redirect": "/dashboard/contacto"
     }

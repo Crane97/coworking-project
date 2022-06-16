@@ -12,6 +12,7 @@ import { ReservationComponent } from './reservations/reservation/reservation.com
 import { RecursiveReservationComponent } from './reservations/recursive-reservation/recursive-reservation.component';
 import { DaysReservationComponent } from './reservations/days-reservation/days-reservation.component';
 import { MyreservationsComponent } from './reservations/myreservations/myreservations.component';
+import { CompaniesComponent } from './companies/companies/companies.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children:[
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path:'usuarios', component: UsersComponent},
     {path:'contacto', component: ContactComponent},
     {path:'salas', component: RoomsComponent},
+    {path:'empresas', component : CompaniesComponent},
     {path:'user/:id', component: ProfileComponent},
     {path:'room/:id', component : RoomComponent },
     {path:'room/:id/reservation', component : ReservationComponent},

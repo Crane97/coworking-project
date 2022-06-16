@@ -1,0 +1,33 @@
+<div class="container backgrounded">
+    <mat-toolbar>
+        <span>Nuestras empresas</span>
+    </mat-toolbar>
+<br>
+    <div class="card" style="width: 90%; margin: auto;">
+
+        <mat-grid-list cols="4" rowHeight="300px">
+            <mat-grid-tile fixed
+                *ngFor="let company of companies"
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-card class="mycard">
+                    <mat-card-header>
+                        <img mat-card-avatar src = {{company.logo}}>
+                        <mat-card-title>{{company.name}}</mat-card-title>
+                        <mat-card-subtitle>{{company.workers}} personas</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>La empresa trabaja en el campo {{company.field}} y tiene {{company.workers}} trabajadores </p>
+                        <p *ngIf="!company.hiring">En estos momentos no buscan más empleados</p>
+                        <p *ngIf="company.hiring">Además, estamos buscando empleados!!</p>
+                        <p>Persona de la aplicación a cargo de esta empresa: {{company.idAdmin.name}} {{company.idAdmin.surname}}</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button mat-button color="primary">Contactar empresa</button>
+                    </mat-card-footer>
+                </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+
+</div>
