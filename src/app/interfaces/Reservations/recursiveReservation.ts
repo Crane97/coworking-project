@@ -5,11 +5,11 @@ export interface RecursiveReservation{
     description : string;
     entryDate : any;
     finalDate : any;
-    monday : string;
-    tuesday : string;
-    wednesday : string;
-    thursday : string;
-    friday : string;
+    monday : boolean;
+    tuesday : boolean;
+    wednesday : boolean;
+    thursday : boolean;
+    friday : boolean;
     start : any;
     end : any;
     status : string;

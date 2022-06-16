@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
     password : 'null',
     openToWork : false,
     jobTitle : 'null',
+    customer : 'null',
     publicable : false,
     description : 'null',
     roles : null,

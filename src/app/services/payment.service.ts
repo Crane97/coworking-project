@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaymentIntentDto } from '../interfaces/payment-intent-dto';
+import { Usuario } from '../interfaces/usuario';
 
 
 const cabecera = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
@@ -33,6 +34,10 @@ export class PaymentService {
 
   createSubscription(priceId : string, userId : number): Observable<any>{
     return this.httpClient.post(this.stripeURL+"checkout/session/" + priceId + "/" + userId, {}, cabecera);
+  }
+
+  createPortal(user : Usuario){
+    return this.httpClient.post(this.stripeURL+"portal/session", user, cabecera);
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Role } from 'src/app/interfaces/role';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { PaymentService } from 'src/app/services/payment.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
@@ -15,10 +17,12 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 export class ProfileComponent implements OnInit {
 
   usuario : Usuario;
+  partnered : boolean;
 
   constructor(private route : ActivatedRoute, 
     private userService : UsersService,
-    private dialogRef : MatDialog) { }
+    private dialogRef : MatDialog,
+    private paymentService : PaymentService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -26,6 +30,8 @@ export class ProfileComponent implements OnInit {
       if(id != null){
         this.userService.getUser(id).subscribe(data => {
           this.usuario = data;
+          console.log(this.usuario);
+          this.partnered = this.usuario.partner
         });
       }
     });
@@ -37,6 +43,14 @@ export class ProfileComponent implements OnInit {
         user : userPop
       }
       });
+  }
+
+  openPortal(){
+    this.paymentService.createPortal(this.usuario).subscribe( data => {
+      console.log(data);
+      console.log(data['url']);
+      window.location.href=data['url'];
+    })
   }
 
 }

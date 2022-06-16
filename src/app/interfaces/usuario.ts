@@ -9,6 +9,7 @@ export interface Usuario{
     password : string;
     openToWork : boolean;
     jobTitle : string;
+    customer : string;
     publicable : boolean;
     description : string;
     roles : Array<any>;
