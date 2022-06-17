@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
+import { SelectCompanyComponent } from '../../companies/select-company/select-company.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
@@ -43,6 +44,10 @@ export class ProfileComponent implements OnInit {
         user : userPop
       }
       });
+  }
+
+  openSelectCompany(){
+    this.dialogRef.open(SelectCompanyComponent);
   }
 
   openPortal(){

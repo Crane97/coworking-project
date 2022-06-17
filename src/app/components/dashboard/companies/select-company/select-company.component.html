@@ -1,0 +1,16 @@
+<div class="container">
+  <form [formGroup]="form" class="example-form" (ngSubmit)="submitForm()">
+
+    <mat-form-field class="ancho" appearance="fill">
+      <mat-label>Empresas</mat-label>
+      <mat-select formControlName="selectedCompany" required>
+        <mat-option *ngFor="let company of companies" [value]="company.id">
+          {{company.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary" style="margin: 10px;"
+      [disabled]="!form.valid">Reservar</button>
+  </form>
+</div>

@@ -12,7 +12,7 @@
         <mat-card-footer>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/edit/' + usuario.id]">Editar perfil</button>
             <button mat-button color="primary" *ngIf="partnered">Crear empresa</button>
-            <button mat-button color="primary" *ngIf="partnered">Asociar empresa</button>
+            <button mat-button color="primary" *ngIf="partnered" (click)="openSelectCompany()">Asociar empresa</button>
             <button mat-button color="primary" *ngIf="partnered">Mi empresa</button>
             <button mat-button color="primary" *ngIf="partnered" (click)="openPortal()">Gestionar suscripción</button>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/myReservations/' + usuario.id]">Mis reservas</button>

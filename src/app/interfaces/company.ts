@@ -7,5 +7,6 @@ export interface Company{
     field : string;
     logo : string;
     hiring : boolean;
-    idAdmin : Usuario;
+    idAdmin : number;
+    nameAdmin : string;
 }

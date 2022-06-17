@@ -20,7 +20,7 @@
                         <p>La empresa trabaja en el campo {{company.field}} y tiene {{company.workers}} trabajadores </p>
                         <p *ngIf="!company.hiring">En estos momentos no buscan más empleados</p>
                         <p *ngIf="company.hiring">Además, estamos buscando empleados!!</p>
-                        <p>Persona de la aplicación a cargo de esta empresa: {{company.idAdmin.name}} {{company.idAdmin.surname}}</p>
+                        <p>Persona de la aplicación a cargo de esta empresa: {{company.nameAdmin}}</p>
                     </mat-card-content>
                     <mat-card-footer>
                         <button mat-button color="primary">Contactar empresa</button>
