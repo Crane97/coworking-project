@@ -46,8 +46,12 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  openSelectCompany(){
-    this.dialogRef.open(SelectCompanyComponent);
+  openSelectCompany(currentUser : Usuario){
+    this.dialogRef.open(SelectCompanyComponent,{
+      data:{
+        currentUser : currentUser
+      }
+    });
   }
 
   openPortal(){

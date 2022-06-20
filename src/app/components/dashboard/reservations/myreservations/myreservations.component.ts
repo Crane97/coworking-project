@@ -20,7 +20,10 @@ export class MyreservationsComponent implements OnInit {
   logUser : String;
   myReservations : Reservation[];
 
-  constructor(private dialogRef : MatDialog, private reservationService : ReservationsService, private userService : UsersService, private restapi : RestapiService) { }
+  constructor(private dialogRef : MatDialog, 
+    private reservationService : ReservationsService, 
+    private userService : UsersService, 
+    private restapi : RestapiService) { }
 
   ngOnInit(): void {
     this.decodedJWT = this.restapi.userLogged();

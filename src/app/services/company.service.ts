@@ -20,4 +20,8 @@ export class CompanyService {
   associateUserToCompany(companyId : number, user : Usuario){
     return this.http.put<Company>(this.companyURL+"/addUserToCompany/" + companyId, user)
   }
+
+  createNewCompanie(company : Company){
+    return this.http.post<Company>(this.companyURL+"/add", company)
+  }
 }

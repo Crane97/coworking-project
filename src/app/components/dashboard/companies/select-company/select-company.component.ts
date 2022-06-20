@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Company } from 'src/app/interfaces/company';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { CompanyService } from 'src/app/services/company.service';
@@ -25,21 +26,23 @@ export class SelectCompanyComponent implements OnInit {
   isLogged : Boolean = false;
   currentUser : Usuario;
 
-  constructor(private http : HttpClient,
-    private fb : FormBuilder,
-    private companyService : CompanyService,
-    private restapi : RestapiService,
-    private userService : UsersService) { }
+  constructor(private fb : FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data,
+    private companyService : CompanyService) {
+      this.currentUser = data.currentUser;
+      console.log(this.currentUser);
+    }
 
   ngOnInit(): void {
+    console.log("ngOnInit");
     this.listAllCompanies;
-    this.getCurrentUser;
     this.form = this.fb.group({
       selectedCompany: ['', Validators.required]
     });
   }
 
   listAllCompanies(){
+    console.log("listAllCompanies");
     this.companyService.getAllCompanies(this.page).subscribe(data =>{
       this.companies = data['content'];
       console.log(this.companies);
@@ -47,18 +50,6 @@ export class SelectCompanyComponent implements OnInit {
     (error)=>{
       console.log(error.error.message);
     })
-  }
-
-  getCurrentUser(){
-    this.decodedJWT = this.restapi.userLogged();
-    console.log(this.decodedJWT);
-    if(this.decodedJWT){
-      this.isLogged = true;
-      this.logUser = this.decodedJWT.sub;
-      this.userService.getUserByUsername(this.logUser).subscribe(data => {
-        this.currentUser = data;
-      });
-    }
   }
 
   submitForm(){

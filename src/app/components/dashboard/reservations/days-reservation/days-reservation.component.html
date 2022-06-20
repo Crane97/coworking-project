@@ -1,72 +1,76 @@
 <div class="container">
-    <mat-toolbar>
-        <span>Reservar sala {{room.name}}</span>
-    </mat-toolbar>
+  <mat-toolbar>
+    <span>Reservar sala {{room.name}}</span>
+  </mat-toolbar>
 
-    <!-- CONSECUTIVE DAYS RESERVATION (ONLY WORKABLE DAYS) -->
-    <mat-card class="mycard">
-        <mat-card-header>
-            <img mat-card-avatar src = {{room.coverImage}}>
-            <mat-card-title>Reservar varios días consecutivos</mat-card-title>
-            <mat-card-subtitle>Reservas todos los días laborables desde la fecha de inicio hasta la fecha final.</mat-card-subtitle>
-        </mat-card-header>
-        <div>Selecciona el rango de fechas en los que vas a querer reservar.</div>
+  <!-- CONSECUTIVE DAYS RESERVATION (ONLY WORKABLE DAYS) -->
+  <mat-card class="mycard">
+    <mat-card-header>
+      <img mat-card-avatar src={{room.coverImage}}>
+      <mat-card-title>Reservar varios días consecutivos</mat-card-title>
+      <mat-card-subtitle>Reservas todos los días laborables desde la fecha de inicio hasta la fecha final.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <div>Selecciona el rango de fechas en los que vas a querer reservar.</div>
+    <br>
+    <form [formGroup]="form" class="example-form" (ngSubmit)="newReservation()">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="pickerStart" formControlName="entryDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de fin</mat-label>
+        <input matInput [matDatepicker]="pickerEnd" formControlName="finalDate"
+          (dateInput)="getCurrentDate($event.value)">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <br>
+
+      <div *ngIf="dateToday">
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input matInput placeholder="Descripción" formControlName="description">
+        </mat-form-field>
         <br>
-        <form [formGroup] = "form" class="example-form" (ngSubmit)="newReservation()">
-            <mat-form-field appearance="fill">
-                <mat-label>Fecha de inicio</mat-label>
-                <input matInput [matDatepicker]="pickerStart" formControlName="entryDate">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-                <mat-datepicker #pickerStart></mat-datepicker>
-            </mat-form-field>
-            <br>
-            <br>
-            <mat-form-field appearance="fill">
-                <mat-label>Fecha de fin</mat-label>
-                <input matInput [matDatepicker]="pickerEnd" formControlName="finalDate" (dateInput)="getCurrentDate($event.value)">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-                <mat-datepicker #pickerEnd></mat-datepicker>
-            </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>Hora de entrada</mat-label>
+          <mat-select formControlName="start" required>
+            <mat-option *ngFor="let schedule of schedules" [value]="schedule">
+              {{schedule}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <br>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>Hora de salida</mat-label>
+          <mat-select formControlName="end" required>
+            <mat-option *ngFor="let schedule of schedules" [value]="schedule">
+              {{schedule}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <br>
-          
-        <div *ngIf="dateToday">
-            <mat-form-field class="ancho" appearance="fill">
-                <mat-label>Descripción</mat-label>
-                <input matInput placeholder="Descripción" formControlName = "description">
-            </mat-form-field>
-            <br>
-              <mat-form-field class="ancho" appearance="fill">
-                <mat-label>Hora de entrada</mat-label>
-                <mat-select formControlName="start" required>
-                  <mat-option *ngFor="let schedule of schedules" [value]="schedule">
-                    {{schedule}}
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="ancho" appearance="fill">
-                <mat-label>Hora de salida</mat-label>
-                <mat-select formControlName="end" required>
-                  <mat-option *ngFor="let schedule of schedules" [value]="schedule">
-                    {{schedule}}
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="ancho" appearance="fill">
-                <mat-label>Sitio</mat-label>
-                <input matInput placeholder="Sitio" formControlName = "place">
-            </mat-form-field>
-            <br>              
-              <div class="example-button-row">
-                <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid">Reservar</button>
-              </div>
-            </div>
-      </form>
-    </mat-card>
-    
-    <button type="cancel" mat-raised-button color="warn" style="margin: 10px;" [routerLink]="['/dashboard/room/' + room.id]">Cancel</button>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>Sitio</mat-label>
+          <input matInput placeholder="Sitio" formControlName="place">
+        </mat-form-field>
+        <br>
+        <div class="example-button-row">
+          <button *ngIf="logUser" type="submit" mat-raised-button color="primary" style="margin: 10px;"
+            [disabled]="!form.valid">Reservar</button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <button type="cancel" mat-raised-button color="warn" style="margin: 10px;"
+    [routerLink]="['/dashboard/room/' + room.id]">Cancel</button>
 </div>

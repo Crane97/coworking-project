@@ -5,13 +5,13 @@ import { ProfileComponent } from './components/dashboard/user/profile/profile.co
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', loadChildren: () => import('./components/dashboard/dashboard.module').then(x => x.DashboardModule) },
   { path: 'admin-mode', loadChildren: () => import('./components/admin-mode/admin-mode.module').then(x => x.AdminModeModule) },
   { path : 'register', component: RegisterComponent },
   { path : 'user/:id', component: ProfileComponent },
-  { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+  { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
