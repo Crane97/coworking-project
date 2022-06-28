@@ -11,9 +11,9 @@
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isLogged"><mat-icon>account_circle</mat-icon></button>
         <mat-menu #menu="matMenu" >
             <button mat-menu-item [routerLink]="['/dashboard/user/' + currentUser.id]">Mi cuenta</button>
-            <button mat-menu-item>Editar mi perfil</button>
-            <button mat-menu-item>Ver lista de empresas</button>
-            <button mat-menu-item>Reportar a bug</button>
+            <button mat-menu-item [routerLink]="['/dashboard/user/edit/'+ currentUser.id]">Editar mi perfil</button>
+            <button mat-menu-item [routerLink]="['/dashboard/empresas']">Ver lista de empresas</button>
+            <button mat-menu-item [routerLink]="['/dashboard/contacto']">Reportar un bug</button>
             <button mat-menu-item [routerLink]="['/dashboard/user/myReservations/' + currentUser.id]">Mis reservas</button>
             <button mat-menu-item (click)="logout()" routerLink="/login">Cerrar sesión</button>
         </mat-menu>
