@@ -54,7 +54,11 @@ export class HomeComponent implements OnInit {
   }
 
   newAppointment(){
-    this.dialogRef.open(FaceToFaceComponent);
+    this.dialogRef.open(FaceToFaceComponent, {
+      data:{
+        currentUser : this.currentUser
+      }
+    });
   }
 
 }

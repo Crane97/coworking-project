@@ -30,7 +30,8 @@ export class NavbarComponent implements OnInit {
     publicable : false,
     description : 'null',
     roles : null,
-    reservation : null
+    reservation : null,
+    company : null,
   };
   logUser : String;
   isLogged : Boolean = false;

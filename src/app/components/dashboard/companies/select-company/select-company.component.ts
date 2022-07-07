@@ -17,13 +17,9 @@ export class SelectCompanyComponent implements OnInit {
 
   page:number = 0;
   companies : Company[];
-  company : Company;
+  company : number;
 
   form: FormGroup;
-
-  decodedJWT : any;
-  logUser : String;
-  isLogged : Boolean = false;
   currentUser : Usuario;
 
   constructor(private fb : FormBuilder,
@@ -35,7 +31,7 @@ export class SelectCompanyComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("ngOnInit");
-    this.listAllCompanies;
+    this.listAllCompanies();
     this.form = this.fb.group({
       selectedCompany: ['', Validators.required]
     });
@@ -53,9 +49,9 @@ export class SelectCompanyComponent implements OnInit {
   }
 
   submitForm(){
-    this.company = this.form.value;
+    this.company = this.form.value.selectedCompany;
     console.log(this.company);
-    this.associateUserToACompany(this.company.id, this.currentUser);
+    this.associateUserToACompany(this.company, this.currentUser);
   }
 
   associateUserToACompany(companyId :number, user : Usuario){

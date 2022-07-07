@@ -1,0 +1,17 @@
+<div class="container">
+    <form [formGroup]="form" class="example-form" (ngSubmit)="submitForm()">
+  
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>Usuarios que trabajan para {{currentUser.company.name}}</mat-label>
+        <mat-select formControlName="selectedAdmin" required>
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{user.name}} {{user.surname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button type="submit" mat-raised-button color="primary" style="margin: 10px;"
+        [disabled]="!form.valid" [mat-dialog-close]>Cambiar administrador</button>
+      <button [mat-dialog-close] mat-raised-button color="warn" style="margin: 10px;">Atrás</button>
+    </form>
+  </div>

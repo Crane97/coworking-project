@@ -1,3 +1,5 @@
+import { Company } from "./company";
+
 export interface Usuario{
     id : number;
     name : string;
@@ -14,4 +16,5 @@ export interface Usuario{
     description : string;
     roles : Array<any>;
     reservation : Array<any>;
+    company : Company;
 }

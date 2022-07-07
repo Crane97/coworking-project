@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -23,39 +23,27 @@ export class FaceToFaceComponent implements OnInit {
   appointment: any; 
 
   constructor(private _snackBar: MatSnackBar,
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
     private reservationService: ReservationsService,
-    private restapi: RestapiService,
-    private userService: UsersService) { }
+    @Inject(MAT_DIALOG_DATA) public data,
+    private fb : FormBuilder) {
+      this.currentUser = data.currentUser
+     }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const id = <number>params['id'];
-      if (id != null) {
-        this.form = this.fb.group({
-          date: [''],
-          user: [''],
-        });
-        this.decodedJWT = this.restapi.userLogged();
-        console.log(this.decodedJWT);
-        if (this.decodedJWT) {
-          this.logUser = this.decodedJWT.sub;
-          this.userService.getUserByUsername(this.logUser).subscribe(data => {
-            this.currentUser = data;
-            console.log(this.currentUser);
-            this.form.controls['user'].setValue(this.currentUser);
-          });
-        }
-      }
+    this.form = this.fb.group({
+      user: [''],
+      date: ['', Validators.required]
     });
+    this.form.controls['user'].setValue(this.currentUser);
+    console.log(this.form.value);
   }
 
   newAppointment(){
     this.appointment = this.form.value;
+    console.log(this.appointment);
     this.reservationService.addAppointment(this.appointment).subscribe(data => {
-      this._snackBar.open('Se ha creado la visita presencial correctamente', '', {
-        duration: 5000,
+      this._snackBar.open('Se ha creado la visita presencial para la fecha '+ this.form.value.date +', aparecerá en el apartado de "mis reservas"', '', {
+        duration: 15000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
         //this.router.navigateByUrl("login"); que te enlace a mis reservas

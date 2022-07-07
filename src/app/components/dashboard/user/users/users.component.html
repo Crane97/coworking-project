@@ -18,6 +18,8 @@
                     <mat-card-content>
                         <p>{{usuario.jobTitle}}</p>
                         <p>{{usuario.description}}</p>
+                        <p *ngIf="usuario.company">Este usuario pertenece a la empresa {{usuario.company.name}}</p>
+                        <p *ngIf="!usuario.company">Este usuario no pertenece a ninguna empresa registrada</p>
                     </mat-card-content>
                     <mat-card-footer>
                         <button mat-button color="primary">Contactar</button>

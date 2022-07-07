@@ -17,11 +17,24 @@ export class CompanyService {
     return this.http.get<Company>(this.companyURL);
   }
 
+  getWorkersForCompany(page:number, companyId : number){
+    var params = new HttpParams().set("page", page);
+    return this.http.get<Company>(this.companyURL+"/workers/"+companyId);
+  }
+
   associateUserToCompany(companyId : number, user : Usuario){
     return this.http.put<Company>(this.companyURL+"/addUserToCompany/" + companyId, user)
   }
 
   createNewCompanie(company : Company){
     return this.http.post<Company>(this.companyURL+"/add", company)
+  }
+
+  disassociateUserToCompany(companyId : number, user : Usuario){
+    return this.http.put<Company>(this.companyURL+"/deleteUserFromCompany/"+companyId, user);
+  }
+
+  selectNewAdmin(companyId : number, userId : number){
+    return this.http.put<Company>(this.companyURL+"/selectNewAdmin/"+companyId+"/"+ userId,"");
   }
 }

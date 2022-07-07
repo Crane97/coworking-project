@@ -8,14 +8,17 @@
         <mat-card-content>
             <p>{{usuario.jobTitle}}</p>
             <p>{{usuario.description}}</p>
+            <p *ngIf="usuario.company">Está dado de alta como trabajador de {{usuario.company.name}}</p>
         </mat-card-content>
         <mat-card-footer>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/edit/' + usuario.id]">Editar perfil</button>
             <button mat-button color="primary" *ngIf="partnered">Crear empresa</button>
             <button mat-button color="primary" *ngIf="partnered" (click)="openSelectCompany(usuario)">Asociar empresa</button>
             <button mat-button color="primary" *ngIf="partnered">Mi empresa</button>
+            <button mat-button color="primary" *ngIf="isCompanyAdmin" (click)="adminSwap(usuario)">Pasar administrador</button>
             <button mat-button color="primary" *ngIf="partnered" (click)="openPortal()">Gestionar suscripción</button>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/myReservations/' + usuario.id]">Mis reservas</button>
+            <button mat-button color="warn" (click)="disassociateUserToCompany()" *ngIf="usuario.company">Darse de baja de la empresa</button>
             <button mat-button color="warn" (click)="closeAccount(usuario)">Darse de baja</button>
         </mat-card-footer>
     </mat-card>
