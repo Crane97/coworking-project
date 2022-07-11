@@ -36,6 +36,7 @@ export class MyreservationsComponent implements OnInit {
         console.log(this.currentUser);
         this.reservationService.getReservationsByUserId(this.currentUser.id).subscribe(data=>{
           this.myReservations = data;
+          console.log(this.myReservations);
         });
       });
     }

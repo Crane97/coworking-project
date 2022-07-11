@@ -48,7 +48,16 @@ export class FaceToFaceComponent implements OnInit {
         verticalPosition: 'bottom'
         //this.router.navigateByUrl("login"); que te enlace a mis reservas
       });
-    })
+    },
+    error => {
+      this._snackBar.open('La fecha seleccionada es anterior a la actual.', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+        //this.router.navigateByUrl("login"); que te enlace a mis reservas
+      });
+    }
+    );
   }
 
   getCurrentDate(event){

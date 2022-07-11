@@ -122,6 +122,14 @@ export class RecursiveReservationComponent implements OnInit {
     });
     console.log(this.reservationResponse[0]);
     this.reservationPaymentAssignement(this.reservationResponse[0]);
+  },
+  error => {
+    this._snackBar.open('Ha habido un error a la hora de crear la reserva, revisa las fechas seleccionadas.', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+      //this.router.navigateByUrl("login"); que te enlace a mis reservas
+    });
   }
   );
   }

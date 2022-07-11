@@ -13,12 +13,12 @@
                 [rowspan]="1">
                 <mat-card class="mycard">
                     <mat-card-header>
-                        <img mat-card-avatar src = {{reservation.room.coverImage}}>
+                        <img *ngIf="reservation.room" mat-card-avatar src = {{reservation.room.coverImage}}>
                         <mat-card-title>{{reservation.description}}</mat-card-title>
                         <mat-card-subtitle>{{reservation.date}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>Tienes una reserva desde las {{reservation.start}} hasta las {{reservation.end}} en {{reservation.room.name}}</p>
+                        <p *ngIf="reservation.room">Tienes una reserva desde las {{reservation.start}} hasta las {{reservation.end}} en {{reservation.room.name}}</p>
                     </mat-card-content>
                     <mat-card-footer>
                         <button mat-button color="primary" (click)="openDialog(reservation)">Cancelar reserva</button>

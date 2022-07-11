@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { PaymentIntentDto } from 'src/app/interfaces/payment-intent-dto';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ReservationsService } from 'src/app/services/reservations.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-reservation-payment',
@@ -19,6 +20,8 @@ import { ReservationsService } from 'src/app/services/reservations.service';
 export class ReservationPaymentComponent implements OnInit {
 
   reservationPayment: ReservationPayment;
+
+  loading$ = this.loadingService.loading$;
 
   card: StripeCardElement;
   elements: StripeElements;
@@ -36,7 +39,8 @@ export class ReservationPaymentComponent implements OnInit {
     private router: Router,
     private snackbar: MatSnackBar,
     private invoiceService: InvoiceService,
-    private reservationService : ReservationsService
+    private reservationService : ReservationsService,
+    private loadingService : LoadingService
   ) {
     this.reservationPayment = data.reservationPayment;
   }
@@ -111,12 +115,14 @@ export class ReservationPaymentComponent implements OnInit {
   }
 
   confirmPayment(id: string) {
+    this.loadingService.show();
     this.paymentService.confirmPayment(id, this.reservationPayment.id).subscribe(data => {
       this._snackBar.open("Se ha confirmado el pago con id: " + data[`id`], '', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
       });
+      this.loadingService.hide();
     },
       err => {
         console.log("error");
@@ -125,6 +131,7 @@ export class ReservationPaymentComponent implements OnInit {
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
+        this.loadingService.hide();
       })
   }
 
