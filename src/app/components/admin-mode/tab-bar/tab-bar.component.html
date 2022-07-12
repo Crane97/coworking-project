@@ -1,68 +1,68 @@
-<div class="container ">
-    <mat-tab-group >
-        <mat-tab label="Usuarios"> 
+<div class="container " *ngIf="isAdmin">
+    <mat-tab-group>
+        <mat-tab label="Usuarios">
             <br>
             <div class="demo-button-container">
                 <button mat-raised-button color="primary" (click)="addUser()">
-                  Add User
+                    Add User
                 </button>
-            </div>  
+            </div>
             <br>
             <table mat-table [dataSource]="usersList" class="mat-elevation-z8">
-                
+
                 <ng-container matColumnDef="id">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.id}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.id}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="name">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Name</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.name}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Name</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.name}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="surname">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Surname</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.surname}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Surname</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.surname}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="email">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Email</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.email}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Email</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.email}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="phone">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Phone</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.phone}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Phone</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.phone}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="partner">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Partnership</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.partner}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Partnership</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.partner}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="username">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Username</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.username}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Username</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.username}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="openToWork">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>OpenToWork</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.openToWork}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>OpenToWork</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.openToWork}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="jobTitle">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Jobtitle</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.jobTitle}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Jobtitle</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.jobTitle}}</td>
                 </ng-container>
-        
+
                 <ng-container matColumnDef="publicable">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Publicable</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.publicable}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Publicable</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.publicable}}</td>
                 </ng-container>
-        
+
                 <ng-container matColumnDef="description">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Description</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.description}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Description</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let user">{{user.description}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="Editar">
@@ -78,44 +78,42 @@
                         <button mat-button color="warn" (click)="deleteUser(user)">Eliminar</button>
                     </td>
                 </ng-container>
-            
+
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplayUser"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplayUser;"></tr>
             </table>
-            <mat-paginator [length]="totalUsers"
-              [pageSize]="20"
-              aria-label="Select page">
+            <mat-paginator [length]="totalUsers" [pageSize]="20" aria-label="Select page">
             </mat-paginator>
 
         </mat-tab>
-        <mat-tab label="Salas"> 
+        <mat-tab label="Salas">
             <br>
             <div class="demo-button-container">
-                <button mat-raised-button color="primary">
-                  Add Room
+                <button mat-raised-button color="primary" (click)="addRoom()">
+                    Add Room
                 </button>
-            </div>  
+            </div>
             <br>
             <table mat-table [dataSource]="roomList" class="mat-elevation-z8">
-                
+
                 <ng-container matColumnDef="id">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.id}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.id}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="name">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>name</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.name}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>name</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.name}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="capacity">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>capacity</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.capacity}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>capacity</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.capacity}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="roomType">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>roomType</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.roomType}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>roomType</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let room">{{room.roomType}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="Editar">
@@ -131,70 +129,69 @@
                         <button mat-button color="warn" (click)="deleteRoom(room)">Eliminar</button>
                     </td>
                 </ng-container>
-            
+
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplayRoom"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplayRoom;"></tr>
             </table>
-            <mat-paginator [length]="totalRooms"
-              [pageSize]="3"
-              aria-label="Select page">
+            <mat-paginator [length]="totalRooms" [pageSize]="3" aria-label="Select page">
             </mat-paginator>
 
         </mat-tab>
-        <mat-tab label="Reservas"> 
-    
+        <mat-tab label="Reservas">
+
             <br>
             <div class="demo-button-container">
                 <button mat-raised-button color="primary">
-                  Add Reservation
+                    Add Reservation
                 </button>
-            </div>  
+            </div>
             <br>
             <table mat-table [dataSource]="reservationList" class="mat-elevation-z8">
-                
+
                 <ng-container matColumnDef="id">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.id}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.id}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Description</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.description}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Description</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.description}}
+                    </td>
                 </ng-container>
 
                 <ng-container matColumnDef="date">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Date</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.date}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Date</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.date}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="start">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Start time</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.start}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Start time</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.start}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="end">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>End time</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.end}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>End time</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.end}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="status">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Status</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.status}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Status</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.status}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="place">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Place</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.place}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Place</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.place}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="user">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>User id</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.user.id}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>User id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.user.id}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="room">
-                <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Room id</th>
-                <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.room.id}}</td>
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Room id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.room.id}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="Editar">
@@ -210,13 +207,82 @@
                         <button mat-button color="warn" (click)="deleteReservation(reservation)">Eliminar</button>
                     </td>
                 </ng-container>
-            
+
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplayReservation"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplayReservation;"></tr>
             </table>
 
         </mat-tab>
-        <mat-tab label="Empresas"> Content 4 </mat-tab>
+        <mat-tab label="Empresas">
+            <br>
+            <div class="demo-button-container">
+                <button mat-raised-button color="primary">
+                    Add Company
+                </button>
+            </div>
+            <br>
+            <table mat-table [dataSource]="companiesList" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="id">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Id</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="workers">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Workers</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.workers}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="field">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Sector</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.field}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="logo">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Logo</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.logo}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="hiring">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Buscando empleados</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.hiring}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="idAdmin">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>id Administrador</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.idAdmin}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="nameAdmin">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Nombre administrador</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">{{company.nameAdmin}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="Editar">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Editar</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">
+                        <button mat-button color="accent">Editar</button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Eliminar">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Eliminar</th>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let company">
+                        <button mat-button color="warn" (click)="deleteCompany(company)">Eliminar</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplayCompanies"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplayCompanies;"></tr>
+            </table>
+            <mat-paginator [length]="totalCompanies" [pageSize]="10" aria-label="Select page">
+            </mat-paginator>
+        </mat-tab>
     </mat-tab-group>
 
     <button mat-button color="primary" routerLink="/dashboard">Back to Dashboard</button>

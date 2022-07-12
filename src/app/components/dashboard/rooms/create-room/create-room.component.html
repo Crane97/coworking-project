@@ -1,0 +1,30 @@
+<div class="body regist">
+    <form [formGroup] = "form" class="example-form" (ngSubmit)="addRoom()">
+            <h1>Crear nueva sala</h1>
+            <mat-form-field class="ancho regist" appearance="fill">
+                <mat-label>Nombre de la sala</mat-label>
+                <input matInput placeholder="Nombre" formControlName = "name">
+              </mat-form-field>
+              <mat-form-field class="example-full-width regist" appearance="fill">
+                <mat-label>Capacidad (number)</mat-label>
+                <input matInput placeholder="Capacidad (number)" formControlName = "capacity">
+              </mat-form-field>
+              <mat-form-field class="example-full-width regist" appearance="fill">
+                <mat-label>Tipo de sala</mat-label>
+                <mat-select formControlName = "roomType" placeholder="Tipo de sala">
+                    <mat-option value="FLEXIBLE">FLEXIBLE</mat-option>
+                    <mat-option value="FIXED">FIXED</mat-option>
+                    <mat-option value="REUNION">REUNION</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="example-full-width regist" appearance="fill">
+                <mat-label>Imagen</mat-label>
+                <input matInput placeholder="Imagen" formControlName = "coverImage">
+              </mat-form-field>
+
+              <div class="example-button-row">
+                <button type="submit" mat-raised-button color="primary" style="margin: 10px;" [disabled]="!form.valid" [mat-dialog-close]>Crear</button>
+                <button mat-raised-button color="warn" style="margin: 10px;" routerLink="/login" [mat-dialog-close]>Atrás</button>
+              </div>
+      </form>
+</div>

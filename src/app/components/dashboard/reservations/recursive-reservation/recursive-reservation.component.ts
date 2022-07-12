@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecursiveReservation } from 'src/app/interfaces/Reservations/recursiveReservation';
 import { Reservation } from 'src/app/interfaces/Reservations/reservation';
 import { ReservationPayment } from 'src/app/interfaces/Reservations/reservationPayment';
@@ -38,6 +38,8 @@ export class RecursiveReservationComponent implements OnInit {
   decodedJWT : any;
   logUser : String;
 
+  fixedPlace : boolean = false;
+
 
   constructor(private _snackBar: MatSnackBar, 
     private fb : FormBuilder, 
@@ -47,7 +49,8 @@ export class RecursiveReservationComponent implements OnInit {
     private restapi : RestapiService, 
     private userService: UsersService,
     private dialogRef : MatDialog,
-    private invoiceService : InvoiceService) {
+    private invoiceService : InvoiceService,
+    private router : Router) {
     
   }
 
@@ -73,6 +76,9 @@ export class RecursiveReservationComponent implements OnInit {
             room: this.room,
             user: [''],
           });
+          if(this.room.roomType == "FIXED"){
+            this.fixedPlace = true;
+          }
         });
         this.decodedJWT = this.restapi.userLogged();
         console.log(this.decodedJWT);
@@ -117,7 +123,6 @@ export class RecursiveReservationComponent implements OnInit {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
-
         //this.router.navigateByUrl("login"); que te enlace a mis reservas
     });
     console.log(this.reservationResponse[0]);

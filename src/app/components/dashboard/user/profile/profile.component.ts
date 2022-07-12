@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Company } from 'src/app/interfaces/company';
 import { Role } from 'src/app/interfaces/role';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { CompanyService } from 'src/app/services/company.service';
@@ -9,6 +10,8 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { RestapiService } from 'src/app/services/restapi.service';
 import { UsersService } from 'src/app/services/users.service';
 import { AdminSwapComponent } from '../../companies/admin-swap/admin-swap.component';
+import { CreateCompanyComponent } from '../../companies/create-company/create-company.component';
+import { DeleteCompanyComponent } from '../../companies/delete-company/delete-company.component';
 import { SelectCompanyComponent } from '../../companies/select-company/select-company.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
@@ -96,6 +99,22 @@ export class ProfileComponent implements OnInit {
         currentUser: currentUser
       }
     });
+  }
+
+  newCompany(currentUser: Usuario){
+    this.dialogRef.open(CreateCompanyComponent, {
+      data: {
+        currentUser: currentUser
+      }
+    });
+  }
+
+  deleteCompany(company : Company){
+    this.dialogRef.open(DeleteCompanyComponent,{
+      data: {
+        company: company
+      }
+    })
   }
 
 }

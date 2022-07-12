@@ -27,4 +27,8 @@ export class RoomsService {
   deleteRoom(id : number){
     return this.http.delete("http://localhost:9090/api/room/delete/" + id);
   }
+
+  addRoom(room : Room){
+    return this.http.post("http://localhost:9090/api/room/add",room, { responseType: "text" })
+  }
 }

@@ -27,6 +27,9 @@ import { FaceToFaceComponent } from './components/dashboard/reservations/face-to
 import { CompaniesComponent } from './components/dashboard/companies/companies/companies.component';
 import { SelectCompanyComponent } from './components/dashboard/companies/select-company/select-company.component';
 import { AdminSwapComponent } from './components/dashboard/companies/admin-swap/admin-swap.component';
+import { CreateCompanyComponent } from './components/dashboard/companies/create-company/create-company.component';
+import { CreateRoomComponent } from './components/dashboard/rooms/create-room/create-room.component';
+import { DeleteCompanyComponent } from './components/dashboard/companies/delete-company/delete-company.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { AdminSwapComponent } from './components/dashboard/companies/admin-swap/
     FaceToFaceComponent,
     CompaniesComponent,
     SelectCompanyComponent,
-    AdminSwapComponent
+    AdminSwapComponent,
+    CreateCompanyComponent,
+    CreateRoomComponent,
+    DeleteCompanyComponent
   ],
   imports: [
     BrowserModule,

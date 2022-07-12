@@ -41,6 +41,7 @@ export class ReservationComponent implements OnInit {
   decodedJWT: any;
   logUser: String;
 
+  fixedPlace : boolean = false;
 
   constructor(private _snackBar: MatSnackBar,
     private fb: FormBuilder,
@@ -69,6 +70,9 @@ export class ReservationComponent implements OnInit {
             room: this.room,
             user: [''],
           });
+          if(this.room.roomType == "FIXED"){
+            this.fixedPlace = true;
+          }
         });
         this.decodedJWT = this.restapi.userLogged();
         console.log(this.decodedJWT);

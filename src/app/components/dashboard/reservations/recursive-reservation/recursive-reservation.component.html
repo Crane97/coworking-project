@@ -68,7 +68,7 @@
           </mat-select>
         </mat-form-field>
         <br>
-        <mat-form-field class="ancho" appearance="fill">
+        <mat-form-field class="ancho" appearance="fill" *ngIf="fixedPlace">
           <mat-label>Sitio</mat-label>
           <input matInput placeholder="Sitio" formControlName="place">
         </mat-form-field>

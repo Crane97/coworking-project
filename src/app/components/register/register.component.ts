@@ -16,7 +16,10 @@ export class RegisterComponent implements OnInit {
   form : FormGroup;
   usuario : Usuario;
 
-  constructor(private fb : FormBuilder, private _snackBar: MatSnackBar, private router: Router, private service : UsersService) {
+  constructor(private fb : FormBuilder, 
+    private _snackBar: MatSnackBar, 
+    private router: Router, 
+    private service : UsersService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],

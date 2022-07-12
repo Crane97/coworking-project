@@ -123,6 +123,7 @@ export class ReservationPaymentComponent implements OnInit {
         verticalPosition: 'bottom'
       });
       this.loadingService.hide();
+      this.router.navigateByUrl("dashboard");
     },
       err => {
         console.log("error");
@@ -156,7 +157,7 @@ export class ReservationPaymentComponent implements OnInit {
   payInPlace() {
     //TODO: Crear servicio para modificar factura y marcar que se pagará en puerta
     this.invoiceService.updatePayAtDoor(this.reservationPayment.id).subscribe(data =>{
-
+      this.router.navigateByUrl("dashboard");
     });
   }
 
@@ -167,8 +168,8 @@ export class ReservationPaymentComponent implements OnInit {
       verticalPosition: 'bottom'
     });
     //TODO: Crear servicio para eliminar las reservas creadas (con el id del invoice)
-    this.reservationService.deleteReservationsByInvoiceId(this.reservationPayment.id).subscribe(data => {
-      
+    this.reservationService.deleteReservationsByInvoiceId(this.reservationPayment.id).subscribe(data => { 
+      this.router.navigateByUrl("dashboard");
     });
   }
 }

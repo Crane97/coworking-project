@@ -37,4 +37,8 @@ export class CompanyService {
   selectNewAdmin(companyId : number, userId : number){
     return this.http.put<Company>(this.companyURL+"/selectNewAdmin/"+companyId+"/"+ userId,"");
   }
+
+  deleteCompany(companyId : number){
+    return this.http.delete(this.companyURL+"/delete/"+ companyId);
+  }
 }

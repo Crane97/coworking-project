@@ -12,13 +12,14 @@
         </mat-card-content>
         <mat-card-footer>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/edit/' + usuario.id]">Editar perfil</button>
-            <button mat-button color="primary" *ngIf="partnered">Crear empresa</button>
+            <button mat-button color="primary" *ngIf="partnered && !usuario.company" (click)="newCompany(usuario)">Crear empresa</button>
             <button mat-button color="primary" *ngIf="partnered" (click)="openSelectCompany(usuario)">Asociar empresa</button>
-            <button mat-button color="primary" *ngIf="partnered">Mi empresa</button>
+            <button mat-button color="primary" *ngIf="partnered && usuario.company">Mi empresa</button>
             <button mat-button color="primary" *ngIf="isCompanyAdmin" (click)="adminSwap(usuario)">Pasar administrador</button>
             <button mat-button color="primary" *ngIf="partnered" (click)="openPortal()">Gestionar suscripción</button>
             <button mat-button color="primary" [routerLink]="['/dashboard/user/myReservations/' + usuario.id]">Mis reservas</button>
-            <button mat-button color="warn" (click)="disassociateUserToCompany()" *ngIf="usuario.company">Darse de baja de la empresa</button>
+            <button mat-button color="warn" *ngIf="isCompanyAdmin" (click)="deleteCompany(usuario.company)">Eliminar empresa</button>
+            <button mat-button color="warn" (click)="disassociateUserToCompany()" *ngIf="usuario.company && !isCompanyAdmin">Darse de baja de la empresa</button>
             <button mat-button color="warn" (click)="closeAccount(usuario)">Darse de baja</button>
         </mat-card-footer>
     </mat-card>
