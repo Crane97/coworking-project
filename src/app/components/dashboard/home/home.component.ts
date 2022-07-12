@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   isLogged : Boolean = false;
   currentUser : Usuario;
 
+  isPartner : boolean = false;
+
   priceId : string = "price_1L4jmzEbpLL7D6KIOT0Mooza";
 
   constructor(private dialogRef: MatDialog, 
@@ -36,6 +38,9 @@ export class HomeComponent implements OnInit {
       this.logUser = this.decodedJWT.sub;
       this.userService.getUserByUsername(this.logUser).subscribe(data => {
         this.currentUser = data;
+        if(this.currentUser.partner){
+          this.isPartner = true;
+        }
       });
     }
   }

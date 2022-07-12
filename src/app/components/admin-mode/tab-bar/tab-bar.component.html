@@ -191,7 +191,10 @@
 
                 <ng-container matColumnDef="room">
                     <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef>Room id</th>
-                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">{{reservation.room.id}}</td>
+                    <td style="padding-left: 20px;" mat-cell *matCellDef="let reservation">
+                        <div *ngIf="reservation.room">{{reservation.room.name}}</div>
+                        <div *ngIf="!reservation.room">{{reservation.room}}</div>
+                </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Editar">

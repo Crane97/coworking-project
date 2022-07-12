@@ -90,7 +90,7 @@
         <mat-grid-tile
             [colspan]="2"
             [rowspan]="2"
-            *ngIf="isLogged">
+            *ngIf="isLogged && !isPartner">
             <mat-card class="example-card" style="background-color: #FFDA91;">
                 <mat-card-header>
                   <img mat-card-avatar src = "../../../../assets/img/hazte-socio.png">
@@ -111,6 +111,27 @@
                 </mat-card-actions>
               </mat-card>
         </mat-grid-tile>
+
+        <mat-grid-tile
+            [colspan]="2"
+            [rowspan]="2"
+            *ngIf="isPartner">
+            <mat-card class="example-card" style="background-color: #FFDA91;">
+                <mat-card-header>
+                  <img mat-card-avatar src = "../../../../assets/img/hazte-socio.png">
+                  <mat-card-title><h1>HAZTE SOCIO YA!!</h1></mat-card-title>
+                  <mat-card-subtitle>Por solo 4.99€ al mes</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    YA ERES SOCIO!!
+                    <br>
+                    Ve a tu perfil para gestionar tu suscripción
+                  </p>
+                </mat-card-content>
+              </mat-card>
+        </mat-grid-tile>
+
         <mat-grid-tile [colspan]="4" [rowspan]="2">
           <mat-card class="example-card" style="background-color: #FFDA91;">
             <mat-card-header>

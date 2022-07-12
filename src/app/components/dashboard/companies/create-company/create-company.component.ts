@@ -17,20 +17,20 @@ export class CreateCompanyComponent implements OnInit {
   currentUser: Usuario;
 
   form: FormGroup;
-  company : Company;
+  company: Company;
 
-  constructor(private fb : FormBuilder,
-    private companyService : CompanyService,
-    private _snackBar : MatSnackBar,
+  constructor(private fb: FormBuilder,
+    private companyService: CompanyService,
+    private _snackBar: MatSnackBar,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data) {
-      this.currentUser = data.currentUser
-     }
+    this.currentUser = data.currentUser
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      field: ['',Validators.required],
+      field: ['', Validators.required],
       logo: ['', Validators.required],
       hiring: ['', Validators.required],
       idAdmin: [''],
@@ -41,17 +41,24 @@ export class CreateCompanyComponent implements OnInit {
     console.log(this.form.value);
   }
 
-  newCompany(){
+  newCompany() {
     this.company = this.form.value;
     console.log(this.company);
-    this.companyService.createNewCompanie(this.company).subscribe(data =>{
-      this._snackBar.open('Se ha creado la nueva empresa '+ this.company.name, '', {
+    this.companyService.createNewCompanie(this.company).subscribe(data => {
+      this._snackBar.open('Se ha creado la nueva empresa ' + this.company.name, '', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
-    });
+      });
       this.router.navigateByUrl("dashboard");
-    })
+    },
+      (error) => {
+        this._snackBar.open('La empresa no se ha podido crear. Comprueba el nombre de la imagen, puede que sea demasiado largo.', '', {
+          duration: 10000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+      })
   }
 
 }
