@@ -6,7 +6,7 @@
     <mat-card-title>Realizar el pago con tarjeta:</mat-card-title>
     <mat-card-content>
         <p>Precio total: {{reservationPayment.totalAmount}} €</p>
-        <p>Descuento: {{reservationPayment.discount}} %</p>
+        <p>Descuento: {{reservationPayment.discount * 100}} %</p>
         <p>Precio a pagar: {{reservationPayment.finalAmount}} €</p>
         <p>Total de horas: {{reservationPayment.totalTime}}</p>
     </mat-card-content>
